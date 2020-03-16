@@ -44,7 +44,7 @@
 #include "nrf_nvmc.h"
 #include "nrf_dfu_types.h"
 #include "nrf_dfu_ble_svci_bond_sharing.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "nrf_dfu_settings.h"
 #include "sdk_config.h"
 

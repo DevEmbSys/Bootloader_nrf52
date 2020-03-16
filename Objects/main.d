@@ -64,15 +64,6 @@
 .\objects\main.o: .\components\libraries\bootloader\dfu\nrf_dfu_flash.h
 .\objects\main.o: .\components\libraries\bootloader\nrf_bootloader_app_start.h
 .\objects\main.o: .\components\libraries\bootloader\nrf_bootloader_dfu_timers.h
-.\objects\main.o: .\components\libraries\log\nrf_log.h
-.\objects\main.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\main.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\main.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\main.o: .\components\libraries\log\nrf_log_types.h
-.\objects\main.o: .\components\libraries\log\nrf_log_ctrl.h
-.\objects\main.o: .\components\libraries\log\src\nrf_log_ctrl_internal.h
-.\objects\main.o: .\components\libraries\log\nrf_log_backend_interface.h
-.\objects\main.o: .\components\libraries\log\nrf_log_default_backends.h
 .\objects\main.o: .\components\libraries\bootloader\nrf_bootloader_info.h
 .\objects\main.o: .\components\softdevice\s132\headers\nrf_sdm.h
 .\objects\main.o: .\components\softdevice\s132\headers\nrf_error_sdm.h

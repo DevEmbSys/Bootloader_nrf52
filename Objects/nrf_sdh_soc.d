@@ -36,7 +36,3 @@
 .\objects\nrf_sdh_soc.o: .\components\libraries\util\app_error.h
 .\objects\nrf_sdh_soc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\nrf_sdh_soc.o: .\components\libraries\util\app_error_weak.h
-.\objects\nrf_sdh_soc.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_sdh_soc.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_sdh_soc.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_sdh_soc.o: .\components\libraries\log\nrf_log_types.h

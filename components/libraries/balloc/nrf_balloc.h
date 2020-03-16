@@ -56,7 +56,7 @@ extern "C" {
 #include "sdk_config.h"
 #include "app_util_platform.h"
 #include "app_util.h"
-#include "nrf_log_instance.h"
+//#include "nrf_log_instance.h"
 #include "nrf_section.h"
 
 /** @brief Name of the module used for logger messaging.
@@ -120,7 +120,7 @@ typedef struct
                                         /**<
                                          * Memory is used as a heap for blocks.
                                          */
-    NRF_LOG_INSTANCE_PTR_DECLARE(p_log) //!< Pointer to instance of the logger object (Conditionally compiled).
+    //NRF_LOG_INSTANCE_PTR_DECLARE(p_log) //!< Pointer to instance of the logger object (Conditionally compiled).
 #if NRF_BALLOC_HAS_NAME
     const char      * p_name;           //!< Pointer to string with pool name.
 #endif
@@ -199,12 +199,12 @@ typedef struct
     static uint32_t             CONCAT_2(_name,_nrf_balloc_pool_mem)                            \
         [NRF_BALLOC_BLOCK_SIZE(_element_size, _debug_flags) * (_pool_size) / sizeof(uint32_t)]; \
     static nrf_balloc_cb_t      CONCAT_2(_name,_nrf_balloc_cb);                                 \
-    NRF_LOG_INSTANCE_REGISTER(NRF_BALLOC_LOG_NAME, _name,                                       \
+    /*NRF_LOG_INSTANCE_REGISTER(NRF_BALLOC_LOG_NAME, _name,                                       \
                               NRF_BALLOC_CONFIG_INFO_COLOR,                                     \
                               NRF_BALLOC_CONFIG_DEBUG_COLOR,                                    \
                               NRF_BALLOC_CONFIG_INITIAL_LOG_LEVEL,                              \
                               NRF_BALLOC_CONFIG_LOG_ENABLED ?                                   \
-                                      NRF_BALLOC_CONFIG_LOG_LEVEL : NRF_LOG_SEVERITY_NONE);     \
+                                      NRF_BALLOC_CONFIG_LOG_LEVEL : NRF_LOG_SEVERITY_NONE); */    \
     NRF_SECTION_ITEM_REGISTER(nrf_balloc, const nrf_balloc_t  _name) =                          \
         {                                                                                       \
             .p_cb           = &CONCAT_2(_name,_nrf_balloc_cb),                                  \
@@ -213,7 +213,7 @@ typedef struct
             .p_memory_begin = CONCAT_2(_name,_nrf_balloc_pool_mem),                             \
             .block_size     = NRF_BALLOC_BLOCK_SIZE(_element_size, _debug_flags),               \
                                                                                                 \
-            NRF_LOG_INSTANCE_PTR_INIT(p_log, NRF_BALLOC_LOG_NAME, _name)                        \
+            /*NRF_LOG_INSTANCE_PTR_INIT(p_log, NRF_BALLOC_LOG_NAME, _name)                        */\
             __NRF_BALLOC_ASSIGN_POOL_NAME(_name)                                                \
             __NRF_BALLOC_ASSIGN_DEBUG_FLAGS(_debug_flags)                                       \
         }

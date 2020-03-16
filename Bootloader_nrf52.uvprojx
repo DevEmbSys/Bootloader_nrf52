@@ -52,7 +52,7 @@
           <OutputName>Bootloader_nrf52</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
@@ -133,12 +133,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <Capability>1</Capability>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -187,7 +187,7 @@
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -209,7 +209,7 @@
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
             <Im1Chk>1</Im1Chk>
-            <Im2Chk>1</Im2Chk>
+            <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
                 <Type>0</Type>
@@ -273,8 +273,8 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x0</StartAddress>
-                <Size>0x80000</Size>
+                <StartAddress>0x78000</StartAddress>
+                <Size>0x6000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -299,19 +299,19 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x1000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
-                <StartAddress>0x800000</StartAddress>
-                <Size>0x10000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x0</Size>
               </OCR_RVCT10>
             </OnChipMemories>
             <RvctStartVector></RvctStartVector>
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -333,10 +333,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--reduce_paths</MiscControls>
               <Define>BLE_STACK_SUPPORT_REQD BOARD_PCA10040 CONFIG_GPIO_AS_PINRESET FLOAT_ABI_HARD NRF52 NRF52832_XXAA NRF52_PAN_74 NRF_DFU_SETTINGS_VERSION=2 NRF_DFU_SVCI_ENABLED NRF_SD_BLE_API_VERSION=7 S132 SOFTDEVICE_PRESENT SVC_INTERFACE_CALL_AS_NORMAL_FUNCTION __HEAP_SIZE=0 uECC_ENABLE_VLI_API=0 uECC_OPTIMIZATION_LEVEL=3 uECC_SQUARE_FUNC=0 uECC_SUPPORT_COMPRESSED_POINT=0 uECC_VLI_NATIVE_LITTLE_ENDIAN=1</Define>
               <Undefine></Undefine>
-              <IncludePath>.\config;.\components\ble\common;.\components\boards;.\components\libraries\atomic;.\components\libraries\atomic_fifo;.\components\libraries\balloc;.\components\libraries\bootloader;.\components\libraries\bootloader\ble_dfu;.\components\libraries\bootloader\dfu;.\components\libraries\crc32;.\components\libraries\crypto;.\components\libraries\crypto\backend\cc310;.\components\libraries\crypto\backend\cc310_bl;.\components\libraries\crypto\backend\cifra;.\components\libraries\crypto\backend\mbedtls;.\components\libraries\crypto\backend\micro_ecc;.\components\libraries\crypto\backend\nrf_hw;.\components\libraries\crypto\backend\nrf_sw;.\components\libraries\crypto\backend\oberon;.\components\libraries\crypto\backend\optiga;.\components\libraries\delay;.\components\libraries\experimental_section_vars;.\components\libraries\fstorage;.\components\libraries\log;.\components\libraries\log\src;.\components\libraries\mem_manager;.\components\libraries\memobj;.\components\libraries\queue;.\components\libraries\ringbuf;.\components\libraries\scheduler;.\components\libraries\sha256;.\components\libraries\stack_info;.\components\libraries\strerror;.\components\libraries\svc;.\components\libraries\util;.\components\softdevice\common;.\components\softdevice\s132\headers;.\components\softdevice\s132\headers\nrf52;..\..;.\external\fprintf;.\external\micro-ecc\micro-ecc;.\external\nano-pb;.\external\nrf_oberon;.\external\nrf_oberon\include;.\integration\nrfx;.\modules\nrfx;.\modules\nrfx\hal;.\modules\nrfx\mdk;.\config;.\User</IncludePath>
+              <IncludePath>.\config;.\components\ble\common;.\components\boards;.\components\libraries\atomic;.\components\libraries\atomic_fifo;.\components\libraries\balloc;.\components\libraries\bootloader;.\components\libraries\bootloader\ble_dfu;.\components\libraries\bootloader\dfu;.\components\libraries\crc32;.\components\libraries\crypto;.\components\libraries\crypto\backend\cc310;.\components\libraries\crypto\backend\cc310_bl;.\components\libraries\crypto\backend\cifra;.\components\libraries\crypto\backend\mbedtls;.\components\libraries\crypto\backend\micro_ecc;.\components\libraries\crypto\backend\nrf_hw;.\components\libraries\crypto\backend\nrf_sw;.\components\libraries\crypto\backend\oberon;.\components\libraries\crypto\backend\optiga;.\components\libraries\delay;.\components\libraries\experimental_section_vars;.\components\libraries\fstorage;.\components\libraries\mem_manager;.\components\libraries\memobj;.\components\libraries\queue;.\components\libraries\ringbuf;.\components\libraries\scheduler;.\components\libraries\sha256;.\components\libraries\stack_info;.\components\libraries\strerror;.\components\libraries\svc;.\components\libraries\util;.\components\softdevice\common;.\components\softdevice\s132\headers;.\components\softdevice\s132\headers\nrf52;..\..;.\external\fprintf;.\external\micro-ecc\micro-ecc;.\external\nano-pb;.\external\nrf_oberon;.\external\nrf_oberon\include;.\integration\nrfx;.\modules\nrfx;.\modules\nrfx\hal;.\modules\nrfx\mdk;.\config;.\User</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -351,14 +351,14 @@
             <useXO>0</useXO>
             <uClangAs>0</uClangAs>
             <VariousControls>
-              <MiscControls></MiscControls>
-              <Define></Define>
+              <MiscControls> --cpreproc_opts=-DBLE_STACK_SUPPORT_REQD,-DBOARD_PCA10040,-DCONFIG_GPIO_AS_PINRESET,-DFLOAT_ABI_HARD,-DNRF52,-DNRF52832_XXAA,-DNRF52_PAN_74,-DNRF_DFU_SETTINGS_VERSION=2,-DNRF_DFU_SVCI_ENABLED,-DNRF_SD_BLE_API_VERSION=7,-DS132,-DSOFTDEVICE_PRESENT,-DSVC_INTERFACE_CALL_AS_NORMAL_FUNCTION,-D__HEAP_SIZE=0,-DuECC_ENABLE_VLI_API=0,-DuECC_OPTIMIZATION_LEVEL=3,-DuECC_SQUARE_FUNC=0,-DuECC_SUPPORT_COMPRESSED_POINT=0,-DuECC_VLI_NATIVE_LITTLE_ENDIAN=1</MiscControls>
+              <Define>BLE_STACK_SUPPORT_REQD BOARD_PCA10040 CONFIG_GPIO_AS_PINRESET FLOAT_ABI_HARD NRF52 NRF52832_XXAA NRF52_PAN_74 NRF_DFU_SETTINGS_VERSION=2 NRF_DFU_SVCI_ENABLED NRF_SD_BLE_API_VERSION=7 S132 SOFTDEVICE_PRESENT SVC_INTERFACE_CALL_AS_NORMAL_FUNCTION __HEAP_SIZE=0 uECC_ENABLE_VLI_API=0 uECC_OPTIMIZATION_LEVEL=3 uECC_SQUARE_FUNC=0 uECC_SUPPORT_COMPRESSED_POINT=0 uECC_VLI_NATIVE_LITTLE_ENDIAN=1</Define>
               <Undefine></Undefine>
               <IncludePath></IncludePath>
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -367,10 +367,10 @@
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>.\Objects\Bootloader_nrf52.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc></Misc>
+            <Misc>--diag_suppress 6330</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -744,21 +744,6 @@
               <FileName>sha256.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\components\libraries\sha256\sha256.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>nRF_Log</GroupName>
-          <Files>
-            <File>
-              <FileName>nrf_log_frontend.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\components\libraries\log\src\nrf_log_frontend.c</FilePath>
-            </File>
-            <File>
-              <FileName>nrf_log_str_formatter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\components\libraries\log\src\nrf_log_str_formatter.c</FilePath>
             </File>
           </Files>
         </Group>

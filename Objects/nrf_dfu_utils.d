@@ -47,11 +47,6 @@
 .\objects\nrf_dfu_utils.o: .\components\softdevice\s132\headers\nrf_sdm.h
 .\objects\nrf_dfu_utils.o: .\components\softdevice\s132\headers\nrf_error_sdm.h
 .\objects\nrf_dfu_utils.o: .\components\libraries\crc32\crc32.h
-.\objects\nrf_dfu_utils.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_utils.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_dfu_utils.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_utils.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_utils.o: .\components\libraries\log\nrf_log_types.h
 .\objects\nrf_dfu_utils.o: components\libraries\bootloader\dfu\nrf_dfu_validation.h
 .\objects\nrf_dfu_utils.o: components\libraries\bootloader\dfu\dfu-cc.pb.h
 .\objects\nrf_dfu_utils.o: .\external\nano-pb\pb.h

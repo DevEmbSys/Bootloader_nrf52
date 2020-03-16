@@ -49,8 +49,8 @@
 #include "nrf_section.h"
 
 #define NRF_LOG_MODULE_NAME nrf_fstorage
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 
 /* Create the section "fs_data". */
@@ -69,7 +69,7 @@ NRF_SECTION_DEF(fs_data, nrf_fstorage_t);
  * @param _cond     The condition to be evaluated.
  * @param _err      The error code to be returned.
  */
-#define NRF_FSTORAGE_PARAM_CHECK(_cond, _err)                                                       \
+//#define NRF_FSTORAGE_PARAM_CHECK(_cond, _err)                                                       \
     NRF_PARAM_CHECK(NRF_FSTORAGE, _cond, _err, NRF_LOG_ERROR)
 
 
@@ -82,8 +82,8 @@ ret_code_t nrf_fstorage_init(nrf_fstorage_t     * p_fs,
                              nrf_fstorage_api_t * p_api,
                              void               * p_param)
 {
-    NRF_FSTORAGE_PARAM_CHECK(p_fs,  NRF_ERROR_NULL);
-    NRF_FSTORAGE_PARAM_CHECK(p_api, NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs,  NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_api, NRF_ERROR_NULL);
 
     p_fs->p_api = p_api;
 
@@ -96,8 +96,8 @@ ret_code_t nrf_fstorage_uninit(nrf_fstorage_t * p_fs,
 {
     ret_code_t rc;
 
-    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
-    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
 
     rc = (p_fs->p_api)->uninit(p_fs, p_param);
 
@@ -114,14 +114,14 @@ ret_code_t nrf_fstorage_read(nrf_fstorage_t const * p_fs,
                              void                 * p_dest,
                              uint32_t               len)
 {
-    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
-    NRF_FSTORAGE_PARAM_CHECK(p_dest,      NRF_ERROR_NULL);
-    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
-    NRF_FSTORAGE_PARAM_CHECK(len,         NRF_ERROR_INVALID_LENGTH);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_dest,      NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
+//    NRF_FSTORAGE_PARAM_CHECK(len,         NRF_ERROR_INVALID_LENGTH);
 
-    /* Source addres must be word-aligned. */
-    NRF_FSTORAGE_PARAM_CHECK(addr_is_aligned32(src),                NRF_ERROR_INVALID_ADDR);
-    NRF_FSTORAGE_PARAM_CHECK(addr_is_within_bounds(p_fs, src, len), NRF_ERROR_INVALID_ADDR);
+//    /* Source addres must be word-aligned. */
+//    NRF_FSTORAGE_PARAM_CHECK(addr_is_aligned32(src),                NRF_ERROR_INVALID_ADDR);
+//    NRF_FSTORAGE_PARAM_CHECK(addr_is_within_bounds(p_fs, src, len), NRF_ERROR_INVALID_ADDR);
 
     return (p_fs->p_api)->read(p_fs, src, p_dest, len);
 }
@@ -133,18 +133,18 @@ ret_code_t nrf_fstorage_write(nrf_fstorage_t const * p_fs,
                               uint32_t               len,
                               void                 * p_context)
 {
-    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
-    NRF_FSTORAGE_PARAM_CHECK(p_src,       NRF_ERROR_NULL);
-    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
-    NRF_FSTORAGE_PARAM_CHECK(len,         NRF_ERROR_INVALID_LENGTH);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_src,       NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
+//    NRF_FSTORAGE_PARAM_CHECK(len,         NRF_ERROR_INVALID_LENGTH);
 
-    /* Length must be a multiple of the program unit. */
-    NRF_FSTORAGE_PARAM_CHECK(!(len % p_fs->p_flash_info->program_unit), NRF_ERROR_INVALID_LENGTH);
+//    /* Length must be a multiple of the program unit. */
+//    NRF_FSTORAGE_PARAM_CHECK(!(len % p_fs->p_flash_info->program_unit), NRF_ERROR_INVALID_LENGTH);
 
-    /* Source and destination addresses must be word-aligned. */
-    NRF_FSTORAGE_PARAM_CHECK(addr_is_aligned32(dest),                NRF_ERROR_INVALID_ADDR);
-    NRF_FSTORAGE_PARAM_CHECK(addr_is_aligned32((uint32_t)p_src),     NRF_ERROR_INVALID_ADDR);
-    NRF_FSTORAGE_PARAM_CHECK(addr_is_within_bounds(p_fs, dest, len), NRF_ERROR_INVALID_ADDR);
+//    /* Source and destination addresses must be word-aligned. */
+//    NRF_FSTORAGE_PARAM_CHECK(addr_is_aligned32(dest),                NRF_ERROR_INVALID_ADDR);
+//    NRF_FSTORAGE_PARAM_CHECK(addr_is_aligned32((uint32_t)p_src),     NRF_ERROR_INVALID_ADDR);
+//    NRF_FSTORAGE_PARAM_CHECK(addr_is_within_bounds(p_fs, dest, len), NRF_ERROR_INVALID_ADDR);
 
     return (p_fs->p_api)->write(p_fs, dest, p_src, len, p_context);
 }
@@ -155,17 +155,17 @@ ret_code_t nrf_fstorage_erase(nrf_fstorage_t const * p_fs,
                               uint32_t               len,
                               void                 * p_context)
 {
-    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
-    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
-    NRF_FSTORAGE_PARAM_CHECK(len,         NRF_ERROR_INVALID_LENGTH);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs,        NRF_ERROR_NULL);
+//    NRF_FSTORAGE_PARAM_CHECK(p_fs->p_api, NRF_ERROR_INVALID_STATE);
+//    NRF_FSTORAGE_PARAM_CHECK(len,         NRF_ERROR_INVALID_LENGTH);
 
-    /* Address must be aligned to a page boundary. */
-    NRF_FSTORAGE_PARAM_CHECK(addr_is_page_aligned(p_fs, page_addr), NRF_ERROR_INVALID_ADDR);
+//    /* Address must be aligned to a page boundary. */
+//    NRF_FSTORAGE_PARAM_CHECK(addr_is_page_aligned(p_fs, page_addr), NRF_ERROR_INVALID_ADDR);
 
-    NRF_FSTORAGE_PARAM_CHECK(
-        addr_is_within_bounds(p_fs, page_addr, (len * p_fs->p_flash_info->erase_unit)),
-        NRF_ERROR_INVALID_ADDR
-    );
+//    NRF_FSTORAGE_PARAM_CHECK(
+//        addr_is_within_bounds(p_fs, page_addr, (len * p_fs->p_flash_info->erase_unit)),
+//        NRF_ERROR_INVALID_ADDR
+//    );
 
     return (p_fs->p_api)->erase(p_fs, page_addr, len, p_context);
 }

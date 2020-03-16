@@ -33,9 +33,7 @@
 .\objects\nrf_memobj.o: .\components\libraries\util\app_util.h
 .\objects\nrf_memobj.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\nrf_memobj.o: .\components\softdevice\s132\headers\nrf52\nrf_mbr.h
-.\objects\nrf_memobj.o: .\components\libraries\log\nrf_log_instance.h
 .\objects\nrf_memobj.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_memobj.o: .\components\libraries\log\nrf_log_types.h
 .\objects\nrf_memobj.o: .\components\libraries\atomic\nrf_atomic.h
 .\objects\nrf_memobj.o: .\components\libraries\util\sdk_common.h
 .\objects\nrf_memobj.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

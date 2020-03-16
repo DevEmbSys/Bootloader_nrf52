@@ -136,7 +136,3 @@
 .\objects\nrf_dfu_req_handler.o: .\components\libraries\crypto\backend\cc310\cc310_backend_eddsa.h
 .\objects\nrf_dfu_req_handler.o: .\components\libraries\crypto\backend\oberon\oberon_backend_eddsa.h
 .\objects\nrf_dfu_req_handler.o: components\libraries\bootloader\dfu\nrf_dfu_validation.h
-.\objects\nrf_dfu_req_handler.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_req_handler.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_req_handler.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_req_handler.o: .\components\libraries\log\nrf_log_types.h

@@ -23,13 +23,3 @@
 .\objects\nrf_fstorage.o: .\modules\nrfx\mdk\nrf51_to_nrf52.h
 .\objects\nrf_fstorage.o: .\modules\nrfx\mdk\nrf52_name_change.h
 .\objects\nrf_fstorage.o: .\modules\nrfx\mdk\compiler_abstraction.h
-.\objects\nrf_fstorage.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_fstorage.o: .\components\libraries\util\sdk_common.h
-.\objects\nrf_fstorage.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\nrf_fstorage.o: .\components\libraries\util\sdk_os.h
-.\objects\nrf_fstorage.o: .\components\libraries\util\app_util.h
-.\objects\nrf_fstorage.o: .\components\softdevice\s132\headers\nrf52\nrf_mbr.h
-.\objects\nrf_fstorage.o: .\components\softdevice\s132\headers\nrf_svc.h
-.\objects\nrf_fstorage.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_fstorage.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_fstorage.o: .\components\libraries\log\nrf_log_types.h

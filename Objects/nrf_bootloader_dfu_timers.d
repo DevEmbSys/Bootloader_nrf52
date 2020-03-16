@@ -49,12 +49,3 @@
 .\objects\nrf_bootloader_dfu_timers.o: .\modules\nrfx\hal\nrf_clock.h
 .\objects\nrf_bootloader_dfu_timers.o: .\modules\nrfx\hal\nrf_rtc.h
 .\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\delay\nrf_delay.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\util\sdk_common.h
-.\objects\nrf_bootloader_dfu_timers.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\util\sdk_os.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\util\sdk_macros.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_bootloader_dfu_timers.o: .\components\libraries\log\nrf_log_types.h

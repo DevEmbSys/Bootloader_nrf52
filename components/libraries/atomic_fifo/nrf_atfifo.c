@@ -53,7 +53,7 @@
 #else
     #define NRF_LOG_LEVEL       0
 #endif // NRF_ATFIFO_CONFIG_LOG_ENABLED
-#include "nrf_log.h"
+//#include "nrf_log.h"
 
 /* Unions testing */
 STATIC_ASSERT(sizeof(nrf_atfifo_postag_t) == sizeof(uint32_t));
@@ -63,12 +63,12 @@ ret_code_t nrf_atfifo_init(nrf_atfifo_t * const p_fifo, void * p_buf, uint16_t b
 {
     if (NULL == p_buf)
     {
-        NRF_LOG_INST_ERROR(p_fifo->p_log, "Initialization failed. p_buf == NULL");
+        //NRF_LOG_INST_ERROR(p_fifo->p_log, "Initialization failed. p_buf == NULL");
         return NRF_ERROR_NULL;
     }
     if (0 != (buf_size % item_size))
     {
-        NRF_LOG_INST_ERROR(p_fifo->p_log, "Initialization failed. Buf_size not multiple of item_size");
+        //NRF_LOG_INST_ERROR(p_fifo->p_log, "Initialization failed. Buf_size not multiple of item_size");
         return NRF_ERROR_INVALID_LENGTH;
     }
 
@@ -78,7 +78,7 @@ ret_code_t nrf_atfifo_init(nrf_atfifo_t * const p_fifo, void * p_buf, uint16_t b
     p_fifo->buf_size  = buf_size;
     p_fifo->item_size = item_size;
 
-    NRF_LOG_INST_INFO(p_fifo->p_log, "Initialized.");
+    //NRF_LOG_INST_INFO(p_fifo->p_log, "Initialized.");
     return NRF_SUCCESS;
 }
 
@@ -86,7 +86,7 @@ ret_code_t nrf_atfifo_init(nrf_atfifo_t * const p_fifo, void * p_buf, uint16_t b
 ret_code_t nrf_atfifo_clear(nrf_atfifo_t * const p_fifo)
 {
     bool released = nrf_atfifo_space_clear(p_fifo);
-    NRF_LOG_INST_INFO(p_fifo->p_log, "Cleared result:%s", released ? "success" : "busy");
+    //NRF_LOG_INST_INFO(p_fifo->p_log, "Cleared result:%s", released ? "success" : "busy");
     return released ? NRF_SUCCESS : NRF_ERROR_BUSY;
 }
 
@@ -98,7 +98,7 @@ ret_code_t nrf_atfifo_alloc_put(nrf_atfifo_t * const p_fifo, void const * p_var,
     void * p_data = nrf_atfifo_item_alloc(p_fifo, &context);
     if (NULL == p_data)
     {
-        NRF_LOG_INST_WARNING(p_fifo->p_log, "Copying in element (0x%08X) failed - no space.", p_var);
+        //NRF_LOG_INST_WARNING(p_fifo->p_log, "Copying in element (0x%08X) failed - no space.", p_var);
         return NRF_ERROR_NO_MEM;
     }
 
@@ -109,7 +109,7 @@ ret_code_t nrf_atfifo_alloc_put(nrf_atfifo_t * const p_fifo, void const * p_var,
     {
         *p_visible = visible;
     }
-    NRF_LOG_INST_DEBUG(p_fifo->p_log, "Element (0x%08X) copied in.", p_var);
+    //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Element (0x%08X) copied in.", p_var);
     return NRF_SUCCESS;
 }
 
@@ -119,10 +119,10 @@ void * nrf_atfifo_item_alloc(nrf_atfifo_t * const p_fifo, nrf_atfifo_item_put_t 
     if (nrf_atfifo_wspace_req(p_fifo, &(p_context->last_tail)))
     {
         void * p_item = ((uint8_t*)(p_fifo->p_buf)) + p_context->last_tail.pos.wr;
-        NRF_LOG_INST_DEBUG(p_fifo->p_log, "Allocated  element (0x%08X).", p_item);
+        //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Allocated  element (0x%08X).", p_item);
         return p_item;
     }
-    NRF_LOG_INST_WARNING(p_fifo->p_log, "Allocation failed - no space.");
+    //NRF_LOG_INST_WARNING(p_fifo->p_log, "Allocation failed - no space.");
     return NULL;
 }
 
@@ -131,11 +131,11 @@ bool nrf_atfifo_item_put(nrf_atfifo_t * const p_fifo, nrf_atfifo_item_put_t * p_
 {
     if ((p_context->last_tail.pos.wr) == (p_context->last_tail.pos.rd))
     {
-        NRF_LOG_INST_DEBUG(p_fifo->p_log, "Put (uninterrupted)");
+        //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Put (uninterrupted)");
         nrf_atfifo_wspace_close(p_fifo);
         return true;
     }
-    NRF_LOG_INST_DEBUG(p_fifo->p_log, "Put (interrupted!)");
+    //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Put (interrupted!)");
     return false;
 }
 
@@ -147,7 +147,7 @@ ret_code_t nrf_atfifo_get_free(nrf_atfifo_t * const p_fifo, void * const p_var, 
     void const * p_s = nrf_atfifo_item_get(p_fifo, &context);
     if (NULL == p_s)
     {
-        NRF_LOG_INST_WARNING(p_fifo->p_log, "Copying out failed - no item in the FIFO.");
+        //NRF_LOG_INST_WARNING(p_fifo->p_log, "Copying out failed - no item in the FIFO.");
         return NRF_ERROR_NOT_FOUND;
     }
 
@@ -158,7 +158,7 @@ ret_code_t nrf_atfifo_get_free(nrf_atfifo_t * const p_fifo, void * const p_var, 
     {
         *p_released = released;
     }
-    NRF_LOG_INST_DEBUG(p_fifo->p_log, "Element (0x%08X) copied out.", p_var);
+    //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Element (0x%08X) copied out.", p_var);
     return NRF_SUCCESS;
 }
 
@@ -168,10 +168,10 @@ void * nrf_atfifo_item_get(nrf_atfifo_t * const p_fifo, nrf_atfifo_item_get_t * 
     if (nrf_atfifo_rspace_req(p_fifo, &(p_context->last_head)))
     {
         void * p_item = ((uint8_t*)(p_fifo->p_buf)) + p_context->last_head.pos.rd;
-        NRF_LOG_INST_DEBUG(p_fifo->p_log, "Get element: 0x%08X", p_item);
+        //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Get element: 0x%08X", p_item);
         return p_item;
     }
-    NRF_LOG_INST_WARNING(p_fifo->p_log, "Get failed - no item in the FIFO.");
+    //NRF_LOG_INST_WARNING(p_fifo->p_log, "Get failed - no item in the FIFO.");
     return NULL;
 }
 
@@ -180,10 +180,10 @@ bool nrf_atfifo_item_free(nrf_atfifo_t * const p_fifo, nrf_atfifo_item_get_t * p
 {
     if ((p_context->last_head.pos.wr) == (p_context->last_head.pos.rd))
     {
-        NRF_LOG_INST_DEBUG(p_fifo->p_log, "Free (uninterrupted)");
+        //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Free (uninterrupted)");
         nrf_atfifo_rspace_close(p_fifo);
         return true;
     }
-    NRF_LOG_INST_DEBUG(p_fifo->p_log, "Free (interrupted)");
+    //NRF_LOG_INST_DEBUG(p_fifo->p_log, "Free (interrupted)");
     return false;
 }

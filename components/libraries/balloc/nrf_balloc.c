@@ -53,7 +53,7 @@
 #else
     #define NRF_LOG_LEVEL       0
 #endif // NRF_BALLOC_CONFIG_LOG_ENABLED
-#include "nrf_log.h"
+//#include "nrf_log.h"
 
 #define HEAD_GUARD_FILL     0xBAADF00D      /**< Magic number used to mark head guard.*/
 #define TAIL_GUARD_FILL     0xBAADCAFE      /**< Magic number used to mark tail guard.*/
@@ -271,10 +271,10 @@ ret_code_t nrf_balloc_init(nrf_balloc_t const * p_pool)
     }
 #endif
 
-    NRF_LOG_INST_INFO(p_pool->p_log, "Initialized (size: %u x %u = %u bytes)",
-                      pool_size,
-                      p_pool->block_size,
-                      pool_size * p_pool->block_size);
+//    NRF_LOG_INST_INFO(p_pool->p_log, "Initialized (size: %u x %u = %u bytes)",
+//                      pool_size,
+//                      p_pool->block_size,
+//                      pool_size * p_pool->block_size);
 
     p_pool->p_cb->p_stack_pointer = p_pool->p_stack_base;
     while (pool_size--)
@@ -317,7 +317,7 @@ void * nrf_balloc_alloc(nrf_balloc_t const * p_pool)
     }
 #endif
 
-    NRF_LOG_INST_DEBUG(p_pool->p_log, "Allocating element: 0x%08X", p_block);
+    //NRF_LOG_INST_DEBUG(p_pool->p_log, "Allocating element: 0x%08X", p_block);
 
     return p_block;
 }
@@ -327,7 +327,7 @@ void nrf_balloc_free(nrf_balloc_t const * p_pool, void * p_element)
     ASSERT(p_pool != NULL);
     ASSERT(p_element != NULL)
 
-    NRF_LOG_INST_DEBUG(p_pool->p_log, "Freeing element: 0x%08X", p_element);
+    //NRF_LOG_INST_DEBUG(p_pool->p_log, "Freeing element: 0x%08X", p_element);
 
 #if NRF_BALLOC_CONFIG_DEBUG_ENABLED
     void * p_block = nrf_balloc_element_wrap(p_pool, p_element);
@@ -341,17 +341,17 @@ void nrf_balloc_free(nrf_balloc_t const * p_pool, void * p_element)
         // Check if the element belongs to this pool.
         if ((p_block < p_pool->p_memory_begin) || (p_block >= p_memory_end))
         {
-            NRF_LOG_INST_ERROR(p_pool->p_log,
-                              "Attempted to free element (0x%08X) that does not belong to the pool.",
-                              p_element);
+//            NRF_LOG_INST_ERROR(p_pool->p_log,
+//                              "Attempted to free element (0x%08X) that does not belong to the pool.",
+//                              p_element);
             APP_ERROR_CHECK_BOOL(false);
         }
 
         // Check if the pointer is valid.
         if ((((size_t)(p_block) - (size_t)(p_pool->p_memory_begin)) % p_pool->block_size) != 0)
         {
-            NRF_LOG_INST_ERROR(p_pool->p_log,
-                               "Attempted to free corrupted element address (0x%08X).", p_element);
+//            NRF_LOG_INST_ERROR(p_pool->p_log,
+//                               "Attempted to free corrupted element address (0x%08X).", p_element);
             APP_ERROR_CHECK_BOOL(false);
         }
     }
@@ -368,9 +368,9 @@ void nrf_balloc_free(nrf_balloc_t const * p_pool, void * p_element)
         // Check for allocated/free ballance.
         if (p_pool->p_cb->p_stack_pointer >= p_pool->p_stack_limit)
         {
-            NRF_LOG_INST_ERROR(p_pool->p_log,
-                               "Attempted to free an element (0x%08X) while the pool is full.",
-                               p_element);
+//            NRF_LOG_INST_ERROR(p_pool->p_log,
+//                               "Attempted to free an element (0x%08X) while the pool is full.",
+//                               p_element);
             APP_ERROR_CHECK_BOOL(false);
         }
     }
@@ -382,8 +382,8 @@ void nrf_balloc_free(nrf_balloc_t const * p_pool, void * p_element)
         {
             if (nrf_balloc_idx2block(p_pool, *p_idx) == p_block)
             {
-                NRF_LOG_INST_ERROR(p_pool->p_log, "Attempted to double-free an element (0x%08X).",
-                                   p_element);
+//                NRF_LOG_INST_ERROR(p_pool->p_log, "Attempted to double-free an element (0x%08X).",
+//                                   p_element);
                 APP_ERROR_CHECK_BOOL(false);
             }
         }

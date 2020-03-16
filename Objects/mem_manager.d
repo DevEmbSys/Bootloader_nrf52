@@ -28,8 +28,3 @@
 .\objects\mem_manager.o: .\components\libraries\util\sdk_macros.h
 .\objects\mem_manager.o: .\components\libraries\util\nrf_assert.h
 .\objects\mem_manager.o: components\libraries\mem_manager\mem_manager.h
-.\objects\mem_manager.o: .\components\libraries\log\nrf_log.h
-.\objects\mem_manager.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\mem_manager.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\mem_manager.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\mem_manager.o: .\components\libraries\log\nrf_log_types.h

@@ -45,7 +45,3 @@
 .\objects\nrf_dfu_flash.o: .\components\libraries\experimental_section_vars\nrf_section.h
 .\objects\nrf_dfu_flash.o: .\components\libraries\fstorage\nrf_fstorage_sd.h
 .\objects\nrf_dfu_flash.o: .\components\libraries\fstorage\nrf_fstorage_nvmc.h
-.\objects\nrf_dfu_flash.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_flash.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_flash.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_flash.o: .\components\libraries\log\nrf_log_types.h

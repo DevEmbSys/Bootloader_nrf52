@@ -48,7 +48,7 @@
 #include "nrf_crypto_error.h"
 #include "nrf_crypto_hash_shared.h"
 #include "sdk_macros.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "nrf_assert.h"
 
 

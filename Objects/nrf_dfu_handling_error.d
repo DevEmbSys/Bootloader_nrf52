@@ -43,8 +43,3 @@
 .\objects\nrf_dfu_handling_error.o: .\components\softdevice\s132\headers\ble_err.h
 .\objects\nrf_dfu_handling_error.o: components\libraries\bootloader\dfu\nrf_dfu_req_handler.h
 .\objects\nrf_dfu_handling_error.o: components\libraries\bootloader\dfu\nrf_dfu_flash.h
-.\objects\nrf_dfu_handling_error.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_handling_error.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_dfu_handling_error.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_handling_error.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_handling_error.o: .\components\libraries\log\nrf_log_types.h

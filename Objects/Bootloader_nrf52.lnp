@@ -61,8 +61,6 @@
 ".\objects\nrf_section_iter.o"
 ".\objects\nrf_strerror.o"
 ".\objects\sha256.o"
-".\objects\nrf_log_frontend.o"
-".\objects\nrf_log_str_formatter.o"
 ".\external\nrf_oberon\lib\cortex-m4\hard-float\short-wchar\oberon_3.0.1.lib"
 ".\objects\nrf_dfu_svci.o"
 ".\objects\nrf_dfu_svci_handler.o"
@@ -75,7 +73,7 @@
 ".\objects\pb_decode.o"
 ".\objects\arm_startup_nrf52.o"
 ".\objects\system_nrf52.o"
---strict --scatter ".\Objects\Bootloader_nrf52.sct"
---summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--library_type=microlib --strict --scatter ".\Objects\Bootloader_nrf52.sct"
+--diag_suppress 6330 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\Bootloader_nrf52.map" -o .\Objects\Bootloader_nrf52.axf

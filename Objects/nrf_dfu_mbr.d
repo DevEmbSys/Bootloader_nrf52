@@ -41,11 +41,6 @@
 .\objects\nrf_dfu_mbr.o: .\components\softdevice\s132\headers\ble_ranges.h
 .\objects\nrf_dfu_mbr.o: .\components\softdevice\s132\headers\ble_types.h
 .\objects\nrf_dfu_mbr.o: .\components\softdevice\s132\headers\ble_err.h
-.\objects\nrf_dfu_mbr.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_mbr.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_dfu_mbr.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_mbr.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_mbr.o: .\components\libraries\log\nrf_log_types.h
 .\objects\nrf_dfu_mbr.o: .\components\libraries\bootloader\nrf_bootloader_info.h
 .\objects\nrf_dfu_mbr.o: .\components\softdevice\s132\headers\nrf_sdm.h
 .\objects\nrf_dfu_mbr.o: .\components\softdevice\s132\headers\nrf_error_sdm.h

@@ -40,7 +40,7 @@
 #include "nrf_dfu_mbr.h"
 #include "nrf_mbr.h"
 #include "nrf_dfu_types.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "nrf_bootloader_info.h"
 
 #define MBR_IRQ_FORWARD_ADDRESS_ADDRESS (0x20000000) //!< The address of the variable that decides where the MBR forwards interrupts

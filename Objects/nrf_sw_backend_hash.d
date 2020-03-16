@@ -32,8 +32,3 @@
 .\objects\nrf_sw_backend_hash.o: .\components\libraries\crypto\nrf_crypto_error.h
 .\objects\nrf_sw_backend_hash.o: .\components\libraries\crypto\nrf_crypto_types.h
 .\objects\nrf_sw_backend_hash.o: .\components\libraries\crypto\nrf_crypto_hash_shared.h
-.\objects\nrf_sw_backend_hash.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_sw_backend_hash.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_sw_backend_hash.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_sw_backend_hash.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_sw_backend_hash.o: .\components\libraries\log\nrf_log_types.h

@@ -38,7 +38,7 @@
  *
  */
 #include "nrf_dfu_transport.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 
 
 #define DFU_TRANS_SECTION_ITEM_GET(i)       NRF_SECTION_ITEM_GET(dfu_trans, nrf_dfu_transport_t, (i))
@@ -52,7 +52,7 @@ uint32_t nrf_dfu_transports_init(nrf_dfu_observer_t observer)
     uint32_t const num_transports = DFU_TRANS_SECTION_ITEM_COUNT;
     uint32_t ret_val = NRF_SUCCESS;
 
-    NRF_LOG_DEBUG("Initializing transports (found: %d)", num_transports);
+    //NRF_LOG_DEBUG("Initializing transports (found: %d)", num_transports);
 
     for (uint32_t i = 0; i < num_transports; i++)
     {
@@ -60,7 +60,7 @@ uint32_t nrf_dfu_transports_init(nrf_dfu_observer_t observer)
         ret_val = trans->init_func(observer);
         if (ret_val != NRF_SUCCESS)
         {
-            NRF_LOG_DEBUG("Failed to initialize transport %d, error %d", i, ret_val);
+            //NRF_LOG_DEBUG("Failed to initialize transport %d, error %d", i, ret_val);
             break;
         }
     }
@@ -74,7 +74,7 @@ uint32_t nrf_dfu_transports_close(nrf_dfu_transport_t const * p_exception)
     uint32_t const num_transports = DFU_TRANS_SECTION_ITEM_COUNT;
     uint32_t ret_val = NRF_SUCCESS;
 
-    NRF_LOG_DEBUG("Shutting down transports (found: %d)", num_transports);
+    //NRF_LOG_DEBUG("Shutting down transports (found: %d)", num_transports);
 
     for (uint32_t i = 0; i < num_transports; i++)
     {
@@ -82,7 +82,7 @@ uint32_t nrf_dfu_transports_close(nrf_dfu_transport_t const * p_exception)
         ret_val = trans->close_func(p_exception);
         if (ret_val != NRF_SUCCESS)
         {
-            NRF_LOG_DEBUG("Failed to shutdown transport %d, error %d", i, ret_val);
+            //NRF_LOG_DEBUG("Failed to shutdown transport %d, error %d", i, ret_val);
             break;
         }
     }

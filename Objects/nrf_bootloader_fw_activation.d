@@ -48,13 +48,5 @@
 .\objects\nrf_bootloader_fw_activation.o: .\components\softdevice\s132\headers\nrf_sdm.h
 .\objects\nrf_bootloader_fw_activation.o: .\components\softdevice\s132\headers\nrf_error_sdm.h
 .\objects\nrf_bootloader_fw_activation.o: .\components\libraries\crc32\crc32.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\log\nrf_log_types.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\log\nrf_log_ctrl.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\log\src\nrf_log_ctrl_internal.h
-.\objects\nrf_bootloader_fw_activation.o: .\components\libraries\log\nrf_log_backend_interface.h
 .\objects\nrf_bootloader_fw_activation.o: .\components\libraries\bootloader\dfu\nrf_dfu_utils.h
 .\objects\nrf_bootloader_fw_activation.o: components\libraries\bootloader\nrf_bootloader_wdt.h

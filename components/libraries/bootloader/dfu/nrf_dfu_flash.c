@@ -47,8 +47,8 @@
 
 
 #define NRF_LOG_MODULE_NAME nrf_dfu_flash
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 
 void dfu_fstorage_evt_handler(nrf_fstorage_evt_t * p_evt);
@@ -72,15 +72,15 @@ void dfu_fstorage_evt_handler(nrf_fstorage_evt_t * p_evt)
 
     if (p_evt->result == NRF_SUCCESS)
     {
-        NRF_LOG_DEBUG("Flash %s success: addr=%p, pending %d",
-                      (p_evt->id == NRF_FSTORAGE_EVT_WRITE_RESULT) ? "write" : "erase",
-                      p_evt->addr, m_flash_operations_pending);
+//        NRF_LOG_DEBUG("Flash %s success: addr=%p, pending %d",
+//                      (p_evt->id == NRF_FSTORAGE_EVT_WRITE_RESULT) ? "write" : "erase",
+//                      p_evt->addr, m_flash_operations_pending);
     }
     else
     {
-        NRF_LOG_DEBUG("Flash %s failed (0x%x): addr=%p, len=0x%x bytes, pending %d",
-                      (p_evt->id == NRF_FSTORAGE_EVT_WRITE_RESULT) ? "write" : "erase",
-                      p_evt->result, p_evt->addr, p_evt->len, m_flash_operations_pending);
+//        NRF_LOG_DEBUG("Flash %s failed (0x%x): addr=%p, len=0x%x bytes, pending %d",
+//                      (p_evt->id == NRF_FSTORAGE_EVT_WRITE_RESULT) ? "write" : "erase",
+//                      p_evt->result, p_evt->addr, p_evt->len, m_flash_operations_pending);
     }
 
     if (p_evt->p_param)
@@ -100,13 +100,13 @@ ret_code_t nrf_dfu_flash_init(bool sd_irq_initialized)
 #if defined(BLE_STACK_SUPPORT_REQD) || defined(ANT_STACK_SUPPORT_REQD)
     if (sd_irq_initialized)
     {
-        NRF_LOG_DEBUG("Initializing nrf_fstorage_sd backend.");
+        //NRF_LOG_DEBUG("Initializing nrf_fstorage_sd backend.");
         p_api_impl = &nrf_fstorage_sd;
     }
     else
 #endif
     {
-        NRF_LOG_DEBUG("Initializing nrf_fstorage_nvmc backend.");
+        //NRF_LOG_DEBUG("Initializing nrf_fstorage_nvmc backend.");
         p_api_impl = &nrf_fstorage_nvmc;
     }
 
@@ -121,8 +121,8 @@ ret_code_t nrf_dfu_flash_store(uint32_t                   dest,
 {
     ret_code_t rc;
 
-    NRF_LOG_DEBUG("nrf_fstorage_write(addr=%p, src=%p, len=%d bytes), queue usage: %d",
-                  dest, p_src, len, m_flash_operations_pending);
+//    NRF_LOG_DEBUG("nrf_fstorage_write(addr=%p, src=%p, len=%d bytes), queue usage: %d",
+//                  dest, p_src, len, m_flash_operations_pending);
 
     //lint -save -e611 (Suspicious cast)
     rc = nrf_fstorage_write(&m_fs, dest, p_src, len, (void *)callback);
@@ -134,7 +134,7 @@ ret_code_t nrf_dfu_flash_store(uint32_t                   dest,
     }
     else
     {
-        NRF_LOG_WARNING("nrf_fstorage_write() failed with error 0x%x.", rc);
+        //NRF_LOG_WARNING("nrf_fstorage_write() failed with error 0x%x.", rc);
     }
 
     return rc;
@@ -147,8 +147,8 @@ ret_code_t nrf_dfu_flash_erase(uint32_t                 page_addr,
 {
     ret_code_t rc;
 
-    NRF_LOG_DEBUG("nrf_fstorage_erase(addr=0x%p, len=%d pages), queue usage: %d",
-                  page_addr, num_pages, m_flash_operations_pending);
+//    NRF_LOG_DEBUG("nrf_fstorage_erase(addr=0x%p, len=%d pages), queue usage: %d",
+//                  page_addr, num_pages, m_flash_operations_pending);
 
     //lint -save -e611 (Suspicious cast)
     rc = nrf_fstorage_erase(&m_fs, page_addr, num_pages, (void *)callback);
@@ -160,7 +160,7 @@ ret_code_t nrf_dfu_flash_erase(uint32_t                 page_addr,
     }
     else
     {
-        NRF_LOG_WARNING("nrf_fstorage_erase() failed with error 0x%x.", rc);
+        //NRF_LOG_WARNING("nrf_fstorage_erase() failed with error 0x%x.", rc);
     }
 
     return rc;

@@ -40,7 +40,7 @@
 
 #include "nrf_dfu_handling_error.h"
 
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "nrf_dfu_req_handler.h"
 
 static nrf_dfu_ext_error_code_t m_last_error = NRF_DFU_EXT_ERROR_NO_ERROR;

@@ -42,7 +42,7 @@
 #include "nrf_dfu_settings.h"
 #include "nrf_bootloader_info.h"
 #include "crc32.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "nrf_dfu_validation.h"
 
 void nrf_dfu_bank_invalidate(nrf_dfu_bank_t * const p_bank)
@@ -127,15 +127,15 @@ uint32_t nrf_dfu_cache_prepare(const uint32_t required_size, bool single_bank, b
         SOFTDEVICE_DELETED            = 2
     } pass;
 
-    NRF_LOG_DEBUG("Enter nrf_dfu_cache_prepare()");
-    NRF_LOG_DEBUG("required_size: 0x%x.", required_size);
-    NRF_LOG_DEBUG("single_bank: %s.",     single_bank     ? "true" : "false");
-    NRF_LOG_DEBUG("keep_app: %s.",        keep_app        ? "true" : "false");
-    NRF_LOG_DEBUG("keep_softdevice: %s.", keep_softdevice ? "true" : "false");
-    NRF_LOG_DEBUG("SD_PRESENT: %s.",      SD_PRESENT      ? "true" : "false");
-    NRF_LOG_DEBUG("Bank contents:");
-    NRF_LOG_DEBUG("Bank 0 code: 0x%02x: Size: 0x%x", s_dfu_settings.bank_0.bank_code, s_dfu_settings.bank_0.image_size);
-    NRF_LOG_DEBUG("Bank 1 code: 0x%02x: Size: 0x%x", s_dfu_settings.bank_1.bank_code, s_dfu_settings.bank_1.image_size);
+//    NRF_LOG_DEBUG("Enter nrf_dfu_cache_prepare()");
+//    NRF_LOG_DEBUG("required_size: 0x%x.", required_size);
+//    NRF_LOG_DEBUG("single_bank: %s.",     single_bank     ? "true" : "false");
+//    NRF_LOG_DEBUG("keep_app: %s.",        keep_app        ? "true" : "false");
+//    NRF_LOG_DEBUG("keep_softdevice: %s.", keep_softdevice ? "true" : "false");
+//    NRF_LOG_DEBUG("SD_PRESENT: %s.",      SD_PRESENT      ? "true" : "false");
+//    NRF_LOG_DEBUG("Bank contents:");
+//    NRF_LOG_DEBUG("Bank 0 code: 0x%02x: Size: 0x%x", s_dfu_settings.bank_0.bank_code, s_dfu_settings.bank_0.image_size);
+//    NRF_LOG_DEBUG("Bank 1 code: 0x%02x: Size: 0x%x", s_dfu_settings.bank_1.bank_code, s_dfu_settings.bank_1.image_size);
 
     // Pass 0 deletes the app if necessary or requested, and if so, proceeds to pass 1.
     // Pass 1 deletes the SoftDevice if necessary or requested, and if so, proceeds to pass 2.
@@ -178,11 +178,11 @@ uint32_t nrf_dfu_cache_prepare(const uint32_t required_size, bool single_bank, b
         cache_too_small = required_size > (DFU_REGION_END(bootloader_start_addr) - cache_address);
         delete_more     = cache_too_small || single_bank; // Delete app or SoftDevice only if we need more room, or if single bank is requested.
 
-        NRF_LOG_DEBUG("pass: %d.", pass);
-        NRF_LOG_DEBUG("cache_address: 0x%x.", cache_address);
-        NRF_LOG_DEBUG("cache_too_small: %s.", cache_too_small ? "true" : "false");
-        NRF_LOG_DEBUG("keep_firmware: %s.",   keep_firmware   ? "true" : "false");
-        NRF_LOG_DEBUG("delete_more: %s.",     delete_more     ? "true" : "false");
+//        NRF_LOG_DEBUG("pass: %d.", pass);
+//        NRF_LOG_DEBUG("cache_address: 0x%x.", cache_address);
+//        NRF_LOG_DEBUG("cache_too_small: %s.", cache_too_small ? "true" : "false");
+//        NRF_LOG_DEBUG("keep_firmware: %s.",   keep_firmware   ? "true" : "false");
+//        NRF_LOG_DEBUG("delete_more: %s.",     delete_more     ? "true" : "false");
 
         if (!delete_more || keep_firmware || (pass >= SOFTDEVICE_DELETED))
         {
@@ -193,7 +193,7 @@ uint32_t nrf_dfu_cache_prepare(const uint32_t required_size, bool single_bank, b
 
     if (cache_too_small)
     {
-        NRF_LOG_WARNING("Aborting. Cannot fit new firmware on device");
+        //NRF_LOG_WARNING("Aborting. Cannot fit new firmware on device");
         err_code = NRF_ERROR_NO_MEM;
     }
     else
@@ -203,13 +203,13 @@ uint32_t nrf_dfu_cache_prepare(const uint32_t required_size, bool single_bank, b
 #if !defined(BLE_STACK_SUPPORT_REQD) && !defined(ANT_STACK_SUPPORT_REQD)
         if (pass >= SOFTDEVICE_DELETED)
         {
-            NRF_LOG_DEBUG("Invalidating SoftDevice.");
+            //NRF_LOG_DEBUG("Invalidating SoftDevice.");
             nrf_dfu_softdevice_invalidate();
         }
 #endif
         if (pass >= APP_DELETED_DELETE_SOFTDEVICE)
         {
-            NRF_LOG_DEBUG("Invalidating app.");
+            //NRF_LOG_DEBUG("Invalidating app.");
             nrf_dfu_bank_invalidate(&s_dfu_settings.bank_0);
         }
 

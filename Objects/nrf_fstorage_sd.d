@@ -37,8 +37,6 @@
 .\objects\nrf_fstorage_sd.o: .\components\softdevice\common\nrf_sdh_soc.h
 .\objects\nrf_fstorage_sd.o: .\components\libraries\atomic\nrf_atomic.h
 .\objects\nrf_fstorage_sd.o: .\components\libraries\atomic_fifo\nrf_atfifo.h
-.\objects\nrf_fstorage_sd.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_fstorage_sd.o: .\components\libraries\log\nrf_log_types.h
 .\objects\nrf_fstorage_sd.o: .\components\libraries\util\app_util_platform.h
 .\objects\nrf_fstorage_sd.o: .\components\softdevice\s132\headers\nrf_nvic.h
 .\objects\nrf_fstorage_sd.o: .\components\libraries\util\app_error.h

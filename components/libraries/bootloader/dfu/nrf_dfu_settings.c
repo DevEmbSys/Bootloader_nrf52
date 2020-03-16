@@ -56,8 +56,8 @@
 #define DFU_SETTINGS_ADV_NAME_OFFSET_V1         (offsetof(nrf_dfu_settings_t, init_command) + INIT_COMMAND_MAX_SIZE_v1 + NRF_DFU_PEER_DATA_LEN)  //<! Offset in the settings struct where the bond data was located in settings version 1.
 
 #define NRF_LOG_MODULE_NAME nrf_dfu_settings
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 
 /**@brief   This variable reserves a page in flash for bootloader settings
@@ -232,33 +232,33 @@ void nrf_dfu_settings_reinit(void)
 
     if (settings_valid)
     {
-        NRF_LOG_DEBUG("Using settings page.");
+        //NRF_LOG_DEBUG("Using settings page.");
         memcpy(&s_dfu_settings, m_dfu_settings_buffer, sizeof(nrf_dfu_settings_t));
         if (settings_backup_valid)
         {
-            NRF_LOG_DEBUG("Copying forbidden parts from backup page.");
+            //NRF_LOG_DEBUG("Copying forbidden parts from backup page.");
             settings_forbidden_parts_copy_from_backup((uint8_t *)&s_dfu_settings);
         }
     }
     else if (settings_backup_valid)
     {
-        NRF_LOG_INFO("Restoring settings from backup since the settings page contents are "
-                     "invalid (CRC error).");
+//        NRF_LOG_INFO("Restoring settings from backup since the settings page contents are "
+//                     "invalid (CRC error).");
         memcpy(&s_dfu_settings,
                mp_dfu_settings_backup_buffer,
                sizeof(nrf_dfu_settings_t));
     }
     else
     {
-        NRF_LOG_WARNING("Resetting bootloader settings since neither the settings page nor the "
-                        "backup are valid (CRC error).");
+//        NRF_LOG_WARNING("Resetting bootloader settings since neither the settings page nor the "
+//                        "backup are valid (CRC error).");
         memset(&s_dfu_settings, 0x00, sizeof(nrf_dfu_settings_t));
         s_dfu_settings.settings_version = NRF_DFU_SETTINGS_VERSION;
     }
 
     if (NRF_DFU_SETTINGS_COMPATIBILITY_MODE && !NRF_DFU_IN_APP && (s_dfu_settings.settings_version == 1))
     {
-        NRF_LOG_INFO("Old settings page detected. Upgrading info.");
+        //NRF_LOG_INFO("Old settings page detected. Upgrading info.");
 
         // Old version. Translate.
         memcpy(&s_dfu_settings.peer_data, (uint8_t *)&s_dfu_settings + DFU_SETTINGS_BOND_DATA_OFFSET_V1, NRF_DFU_PEER_DATA_LEN);
@@ -278,12 +278,12 @@ void nrf_dfu_settings_reinit(void)
 
 ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized)
 {
-    NRF_LOG_DEBUG("Calling nrf_dfu_settings_init()...");
+    //NRF_LOG_DEBUG("Calling nrf_dfu_settings_init()...");
 
     ret_code_t err_code = nrf_dfu_flash_init(sd_irq_initialized);
     if (err_code != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("nrf_dfu_flash_init() failed with error: %x", err_code);
+        //NRF_LOG_ERROR("nrf_dfu_flash_init() failed with error: %x", err_code);
         return NRF_ERROR_INTERNAL;
     }
 
@@ -293,7 +293,7 @@ ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized)
 
     if (err_code != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("nrf_dfu_settings_write_and_backup() failed with error: %x", err_code);
+        //NRF_LOG_ERROR("nrf_dfu_settings_write_and_backup() failed with error: %x", err_code);
         return NRF_ERROR_INTERNAL;
     }
 
@@ -319,7 +319,7 @@ static ret_code_t settings_write(void                   * p_dst,
 
     if (memcmp(p_dst, p_src, sizeof(nrf_dfu_settings_t)) == 0)
     {
-        NRF_LOG_DEBUG("Destination settings are identical to source, write not needed. Skipping.");
+        //NRF_LOG_DEBUG("Destination settings are identical to source, write not needed. Skipping.");
         if (callback != NULL)
         {
             callback(NULL);
@@ -329,12 +329,12 @@ static ret_code_t settings_write(void                   * p_dst,
 
     if (NRF_DFU_IN_APP && !settings_forbidden_parts_equal_to_backup((uint8_t *)&s_dfu_settings))
     {
-        NRF_LOG_WARNING("Settings write aborted since it tries writing to forbidden settings.");
+        //NRF_LOG_WARNING("Settings write aborted since it tries writing to forbidden settings.");
         return NRF_ERROR_FORBIDDEN;
     }
 
-    NRF_LOG_DEBUG("Writing settings...");
-    NRF_LOG_DEBUG("Erasing old settings at: 0x%08x", p_dst);
+    //NRF_LOG_DEBUG("Writing settings...");
+   // NRF_LOG_DEBUG("Erasing old settings at: 0x%08x", p_dst);
 
     // Not setting the callback function because ERASE is required before STORE
     // Only report completion on successful STORE.
@@ -342,7 +342,7 @@ static ret_code_t settings_write(void                   * p_dst,
 
     if (err_code != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("Could not erase the settings page!");
+        //NRF_LOG_ERROR("Could not erase the settings page!");
         return NRF_ERROR_INTERNAL;
     }
 
@@ -356,7 +356,7 @@ static ret_code_t settings_write(void                   * p_dst,
 
     if (err_code != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("Could not write the DFU settings page!");
+        //NRF_LOG_ERROR("Could not write the DFU settings page!");
         return NRF_ERROR_INTERNAL;
     }
 
@@ -379,10 +379,10 @@ ret_code_t nrf_dfu_settings_write(nrf_dfu_flash_callback_t callback)
 void settings_backup(nrf_dfu_flash_callback_t callback, void * p_src)
 {
 #if NRF_DFU_IN_APP
-    NRF_LOG_INFO("Settings backup not available from app.");
+    //NRF_LOG_INFO("Settings backup not available from app.");
 #else
     static nrf_dfu_settings_t dfu_settings_buffer;
-    NRF_LOG_INFO("Backing up settings page to address 0x%x.", mp_dfu_settings_backup_buffer);
+    //NRF_LOG_INFO("Backing up settings page to address 0x%x.", mp_dfu_settings_backup_buffer);
     ASSERT(crc_ok(p_src));
     ret_code_t err_code = settings_write(mp_dfu_settings_backup_buffer,
                                          p_src,
@@ -391,7 +391,7 @@ void settings_backup(nrf_dfu_flash_callback_t callback, void * p_src)
 
     if (err_code != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("Could not perform backup of bootloader settings! Error: 0x%x", err_code);
+        //NRF_LOG_ERROR("Could not perform backup of bootloader settings! Error: 0x%x", err_code);
     }
 #endif
 }
@@ -420,6 +420,6 @@ ret_code_t nrf_dfu_settings_write_and_backup(nrf_dfu_flash_callback_t callback)
 
 __WEAK ret_code_t nrf_dfu_settings_additional_erase(void)
 {
-    NRF_LOG_WARNING("No additional data erased");
+    //NRF_LOG_WARNING("No additional data erased");
     return NRF_SUCCESS;
 }

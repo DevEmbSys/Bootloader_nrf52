@@ -25,12 +25,4 @@
 .\objects\nrf_atfifo.o: .\components\libraries\util\nrf_assert.h
 .\objects\nrf_atfifo.o: .\components\libraries\util\sdk_errors.h
 .\objects\nrf_atfifo.o: .\components\softdevice\s132\headers\nrf_error.h
-.\objects\nrf_atfifo.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_atfifo.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_atfifo.o: .\components\libraries\log\nrf_log_types.h
 .\objects\nrf_atfifo.o: components\libraries\atomic_fifo\nrf_atfifo_internal.h
-.\objects\nrf_atfifo.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_atfifo.o: .\components\libraries\util\sdk_common.h
-.\objects\nrf_atfifo.o: .\components\libraries\util\sdk_os.h
-.\objects\nrf_atfifo.o: .\components\libraries\util\sdk_macros.h
-.\objects\nrf_atfifo.o: .\components\libraries\log\src\nrf_log_internal.h

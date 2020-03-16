@@ -62,8 +62,8 @@
 #include "nrf_dfu_validation.h"
 
 #define NRF_LOG_MODULE_NAME nrf_dfu_req_handler
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 #define NRF_DFU_PROTOCOL_VERSION    (0x01)
 
@@ -83,7 +83,7 @@ static void on_dfu_complete(nrf_fstorage_evt_t * p_evt)
 {
     UNUSED_PARAMETER(p_evt);
 
-    NRF_LOG_DEBUG("All flash operations have completed. DFU completed.");
+    //NRF_LOG_DEBUG("All flash operations have completed. DFU completed.");
 
     m_observer(NRF_DFU_EVT_DFU_COMPLETED);
 }
@@ -108,7 +108,7 @@ static nrf_dfu_result_t ext_err_code_handle(nrf_dfu_result_t ret_val)
 static void on_protocol_version_request(nrf_dfu_request_t const * p_req, nrf_dfu_response_t * p_res)
 {
     UNUSED_PARAMETER(p_req);
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_PROTOCOL_VERSION");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_PROTOCOL_VERSION");
 
     if (NRF_DFU_PROTOCOL_VERSION_MSG)
     {
@@ -116,7 +116,7 @@ static void on_protocol_version_request(nrf_dfu_request_t const * p_req, nrf_dfu
     }
     else
     {
-        NRF_LOG_DEBUG("NRF_DFU_OP_PROTOCOL_VERSION disabled.");
+        //NRF_LOG_DEBUG("NRF_DFU_OP_PROTOCOL_VERSION disabled.");
         p_res->result = NRF_DFU_RES_CODE_OP_CODE_NOT_SUPPORTED;
     }
 }
@@ -124,7 +124,7 @@ static void on_protocol_version_request(nrf_dfu_request_t const * p_req, nrf_dfu
 
 static void on_hw_version_request(nrf_dfu_request_t const * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_HARDWARE_VERSION");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_HARDWARE_VERSION");
 
     p_res->hardware.part    = NRF_FICR->INFO.PART;
     p_res->hardware.variant = NRF_FICR->INFO.VARIANT;
@@ -138,8 +138,8 @@ static void on_hw_version_request(nrf_dfu_request_t const * p_req, nrf_dfu_respo
 
 static void on_fw_version_request(nrf_dfu_request_t const * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_FIRMWARE_VERSION");
-    NRF_LOG_DEBUG("Firmware image requested: %d", p_req->firmware.image_number);
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_FIRMWARE_VERSION");
+    //NRF_LOG_DEBUG("Firmware image requested: %d", p_req->firmware.image_number);
 
     if (NRF_DFU_PROTOCOL_FW_VERSION_MSG)
     {
@@ -185,7 +185,7 @@ static void on_fw_version_request(nrf_dfu_request_t const * p_req, nrf_dfu_respo
         }
         else
         {
-            NRF_LOG_DEBUG("No such firmware image");
+            //NRF_LOG_DEBUG("No such firmware image");
             p_res->firmware.type    = NRF_DFU_FIRMWARE_TYPE_UNKNOWN;
             p_res->firmware.version = 0x00;
             p_res->firmware.addr    = 0x00;
@@ -194,7 +194,7 @@ static void on_fw_version_request(nrf_dfu_request_t const * p_req, nrf_dfu_respo
     }
     else
     {
-        NRF_LOG_DEBUG("NRF_DFU_OP_FIRMWARE_VERSION disabled.");
+        //NRF_LOG_DEBUG("NRF_DFU_OP_FIRMWARE_VERSION disabled.");
         p_res->result        = NRF_DFU_RES_CODE_OP_CODE_NOT_SUPPORTED;
         p_res->firmware.type = NRF_DFU_FIRMWARE_TYPE_UNKNOWN;
     }
@@ -203,14 +203,14 @@ static void on_fw_version_request(nrf_dfu_request_t const * p_req, nrf_dfu_respo
 
 static void on_ping_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_PING");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_PING");
     p_res->ping.id = p_req->ping.id;
 }
 
 
 static void on_mtu_get_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_MTU_GET");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_MTU_GET");
     p_res->mtu.size = p_req->mtu.size;
 }
 #endif // !NRF_DFU_PROTOCOL_REDUCED
@@ -220,7 +220,7 @@ static void on_prn_set_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p
 {
     UNUSED_PARAMETER(p_req);
     UNUSED_PARAMETER(p_res);
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_RECEIPT_NOTIF_SET");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_RECEIPT_NOTIF_SET");
 }
 
 
@@ -228,7 +228,7 @@ static void on_abort_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_r
 {
     UNUSED_PARAMETER(p_req);
     UNUSED_PARAMETER(p_res);
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_ABORT");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_ABORT");
 
     m_observer(NRF_DFU_EVT_DFU_ABORTED);
 }
@@ -248,7 +248,7 @@ static void cmd_response_offset_and_crc_set(nrf_dfu_response_t * const p_res)
 static void on_cmd_obj_select_request(nrf_dfu_request_t const * p_req, nrf_dfu_response_t * p_res)
 {
     UNUSED_PARAMETER(p_req);
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_SELECT (command)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_SELECT (command)");
 
     p_res->select.max_size = INIT_COMMAND_MAX_SIZE;
     cmd_response_offset_and_crc_set(p_res);
@@ -260,7 +260,7 @@ static void on_cmd_obj_create_request(nrf_dfu_request_t * p_req, nrf_dfu_respons
     ASSERT(p_req);
     ASSERT(p_res);
 
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_CREATE (command)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_CREATE (command)");
 
     m_observer(NRF_DFU_EVT_DFU_STARTED);
 
@@ -276,7 +276,7 @@ static void on_cmd_obj_write_request(nrf_dfu_request_t * p_req, nrf_dfu_response
     ASSERT(p_req->write.len);
     ASSERT(p_res);
 
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_WRITE (command)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_WRITE (command)");
 
     nrf_dfu_result_t ret_val;
 
@@ -300,7 +300,7 @@ static void on_cmd_obj_execute_request(nrf_dfu_request_t const * p_req, nrf_dfu_
     ASSERT(p_req);
     ASSERT(p_res);
 
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_EXECUTE (command)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_EXECUTE (command)");
 
     nrf_dfu_result_t ret_val;
     ret_val = nrf_dfu_validation_init_cmd_execute(&m_firmware_start_addr, &m_firmware_size_req);
@@ -311,7 +311,7 @@ static void on_cmd_obj_execute_request(nrf_dfu_request_t const * p_req, nrf_dfu_
         if (nrf_dfu_settings_write_and_backup(NULL) == NRF_SUCCESS)
         {
             /* Setting DFU to initialized */
-            NRF_LOG_DEBUG("Writing valid init command to flash.");
+            //NRF_LOG_DEBUG("Writing valid init command to flash.");
         }
         else
         {
@@ -324,7 +324,7 @@ static void on_cmd_obj_execute_request(nrf_dfu_request_t const * p_req, nrf_dfu_
 static void on_cmd_obj_crc_request(nrf_dfu_request_t const * p_req, nrf_dfu_response_t * p_res)
 {
     UNUSED_PARAMETER(p_req);
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_CRC_GET (command)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_CRC_GET (command)");
 
     cmd_response_offset_and_crc_set(p_res);
 }
@@ -381,35 +381,35 @@ static void nrf_dfu_command_req(nrf_dfu_request_t * p_req, nrf_dfu_response_t * 
 
 static void on_data_obj_select_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_SELECT (data)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_SELECT (data)");
 
     p_res->select.crc    = s_dfu_settings.progress.firmware_image_crc;
     p_res->select.offset = s_dfu_settings.progress.firmware_image_offset;
 
     p_res->select.max_size = DATA_OBJECT_MAX_SIZE;
 
-    NRF_LOG_DEBUG("crc = 0x%x, offset = 0x%x, max_size = 0x%x",
-                  p_res->select.crc,
-                  p_res->select.offset,
-                  p_res->select.max_size);
+//    NRF_LOG_DEBUG("crc = 0x%x, offset = 0x%x, max_size = 0x%x",
+//                  p_res->select.crc,
+//                  p_res->select.offset,
+//                  p_res->select.max_size);
 }
 
 
 static void on_data_obj_create_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_CREATE (data)");
+   // NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_CREATE (data)");
 
     if (!nrf_dfu_validation_init_cmd_present())
     {
         /* Can't accept data because DFU isn't initialized by init command. */
-        NRF_LOG_ERROR("Cannot create data object without valid init command");
+        //NRF_LOG_ERROR("Cannot create data object without valid init command");
         p_res->result = NRF_DFU_RES_CODE_OPERATION_NOT_PERMITTED;
         return;
     }
 
     if (p_req->create.object_size == 0)
     {
-        NRF_LOG_ERROR("Object size cannot be 0.")
+        //NRF_LOG_ERROR("Object size cannot be 0.")
         p_res->result = NRF_DFU_RES_CODE_INVALID_PARAMETER;
         return;
     }
@@ -417,7 +417,7 @@ static void on_data_obj_create_request(nrf_dfu_request_t * p_req, nrf_dfu_respon
     if (  ((p_req->create.object_size & (CODE_PAGE_SIZE - 1)) != 0)
         && (s_dfu_settings.progress.firmware_image_offset_last + p_req->create.object_size != m_firmware_size_req))
     {
-        NRF_LOG_ERROR("Object size must be page aligned");
+        //NRF_LOG_ERROR("Object size must be page aligned");
         p_res->result = NRF_DFU_RES_CODE_INVALID_PARAMETER;
         return;
     }
@@ -425,7 +425,7 @@ static void on_data_obj_create_request(nrf_dfu_request_t * p_req, nrf_dfu_respon
     if (p_req->create.object_size > DATA_OBJECT_MAX_SIZE)
     {
         /* It is impossible to handle the command because the size is too large */
-        NRF_LOG_ERROR("Invalid size for object (too large)");
+        //NRF_LOG_ERROR("Invalid size for object (too large)");
         p_res->result = NRF_DFU_RES_CODE_INSUFFICIENT_RESOURCES;
         return;
     }
@@ -433,11 +433,11 @@ static void on_data_obj_create_request(nrf_dfu_request_t * p_req, nrf_dfu_respon
     if ((s_dfu_settings.progress.firmware_image_offset_last + p_req->create.object_size) >
         m_firmware_size_req)
     {
-        NRF_LOG_ERROR("Creating the object with size 0x%08x would overflow firmware size. "
-                      "Offset is 0x%08x and firmware size is 0x%08x.",
-                      p_req->create.object_size,
-                      s_dfu_settings.progress.firmware_image_offset_last,
-                      m_firmware_size_req);
+//        NRF_LOG_ERROR("Creating the object with size 0x%08x would overflow firmware size. "
+//                      "Offset is 0x%08x and firmware size is 0x%08x.",
+//                      p_req->create.object_size,
+//                      s_dfu_settings.progress.firmware_image_offset_last,
+//                      m_firmware_size_req);
 
         p_res->result = NRF_DFU_RES_CODE_OPERATION_NOT_PERMITTED;
         return;
@@ -452,21 +452,21 @@ static void on_data_obj_create_request(nrf_dfu_request_t * p_req, nrf_dfu_respon
     if (nrf_dfu_flash_erase((m_firmware_start_addr + s_dfu_settings.progress.firmware_image_offset),
                             CEIL_DIV(p_req->create.object_size, CODE_PAGE_SIZE), NULL) != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("Erase operation failed");
+        //NRF_LOG_ERROR("Erase operation failed");
         p_res->result = NRF_DFU_RES_CODE_INVALID_OBJECT;
         return;
     }
 
-    NRF_LOG_DEBUG("Creating object with size: %d. Offset: 0x%08x, CRC: 0x%08x",
-                 s_dfu_settings.progress.data_object_size,
-                 s_dfu_settings.progress.firmware_image_offset,
-                 s_dfu_settings.progress.firmware_image_crc);
+//    NRF_LOG_DEBUG("Creating object with size: %d. Offset: 0x%08x, CRC: 0x%08x",
+//                 s_dfu_settings.progress.data_object_size,
+//                 s_dfu_settings.progress.firmware_image_offset,
+//                 s_dfu_settings.progress.firmware_image_crc);
 }
 
 
 static void on_data_obj_write_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_WRITE (data)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_WRITE (data)");
 
     if (!nrf_dfu_validation_init_cmd_present())
     {
@@ -481,7 +481,7 @@ static void on_data_obj_write_request(nrf_dfu_request_t * p_req, nrf_dfu_respons
     if ((p_req->write.len + data_object_offset) > s_dfu_settings.progress.data_object_size)
     {
         /* Can't accept data because too much data has been received. */
-        NRF_LOG_ERROR("Write request too long");
+        //NRF_LOG_ERROR("Write request too long");
         p_res->result = NRF_DFU_RES_CODE_INVALID_PARAMETER;
         return;
     }
@@ -523,10 +523,10 @@ static void on_data_obj_write_request(nrf_dfu_request_t * p_req, nrf_dfu_respons
 
 static void on_data_obj_crc_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_CRC_GET (data)");
-    NRF_LOG_DEBUG("Offset:%d, CRC:0x%08x",
-                 s_dfu_settings.progress.firmware_image_offset,
-                 s_dfu_settings.progress.firmware_image_crc);
+//    NRF_LOG_DEBUG("Handle NRF_DFU_OP_CRC_GET (data)");
+//    NRF_LOG_DEBUG("Offset:%d, CRC:0x%08x",
+//                 s_dfu_settings.progress.firmware_image_offset,
+//                 s_dfu_settings.progress.firmware_image_crc);
 
     p_res->crc.crc    = s_dfu_settings.progress.firmware_image_crc;
     p_res->crc.offset = s_dfu_settings.progress.firmware_image_offset;
@@ -546,7 +546,7 @@ static void on_data_obj_execute_request_sched(void * p_evt, uint16_t event_lengt
         ret = app_sched_event_put(p_req, sizeof(nrf_dfu_request_t), on_data_obj_execute_request_sched);
         if (ret != NRF_SUCCESS)
         {
-            NRF_LOG_ERROR("Failed to schedule object execute: 0x%x.", ret);
+            //NRF_LOG_ERROR("Failed to schedule object execute: 0x%x.", ret);
         }
         return;
     }
@@ -558,7 +558,7 @@ static void on_data_obj_execute_request_sched(void * p_evt, uint16_t event_lengt
 
     if (s_dfu_settings.progress.firmware_image_offset == m_firmware_size_req)
     {
-        NRF_LOG_DEBUG("Whole firmware image received. Postvalidating.");
+        //NRF_LOG_DEBUG("Whole firmware image received. Postvalidating.");
 
         #if NRF_DFU_IN_APP
         res.result = nrf_dfu_validation_post_data_execute(m_firmware_start_addr, m_firmware_size_req);
@@ -589,13 +589,13 @@ static void on_data_obj_execute_request_sched(void * p_evt, uint16_t event_lengt
         }
     }
 
-    NRF_LOG_DEBUG("Request handling complete. Result: 0x%x", res.result);
+    //NRF_LOG_DEBUG("Request handling complete. Result: 0x%x", res.result);
 }
 
 
 static bool on_data_obj_execute_request(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res)
 {
-    NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_EXECUTE (data)");
+    //NRF_LOG_DEBUG("Handle NRF_DFU_OP_OBJECT_EXECUTE (data)");
 
     uint32_t const data_object_size = s_dfu_settings.progress.firmware_image_offset -
                                       s_dfu_settings.progress.firmware_image_offset_last;
@@ -603,9 +603,9 @@ static bool on_data_obj_execute_request(nrf_dfu_request_t * p_req, nrf_dfu_respo
     if (s_dfu_settings.progress.data_object_size != data_object_size)
     {
         /* The size of the written object was not as expected. */
-        NRF_LOG_ERROR("Invalid data. expected: %d, got: %d",
-                      s_dfu_settings.progress.data_object_size,
-                      data_object_size);
+//        NRF_LOG_ERROR("Invalid data. expected: %d, got: %d",
+//                      s_dfu_settings.progress.data_object_size,
+//                      data_object_size);
 
         p_res->result = NRF_DFU_RES_CODE_OPERATION_NOT_PERMITTED;
         return true;
@@ -704,7 +704,7 @@ static bool nrf_dfu_obj_op(nrf_dfu_request_t * p_req, nrf_dfu_response_t * p_res
 
         default:
             /* The select request had an invalid object type. */
-            NRF_LOG_ERROR("Invalid object type in request.");
+            //NRF_LOG_ERROR("Invalid object type in request.");
             current_object = NRF_DFU_OBJ_TYPE_INVALID;
             p_res->result  = NRF_DFU_RES_CODE_INVALID_OBJECT;
             break;
@@ -778,14 +778,14 @@ static void nrf_dfu_req_handler_req_process(nrf_dfu_request_t * p_req)
         } break;
 
         default:
-            NRF_LOG_INFO("Invalid opcode received: 0x%x.", p_req->request);
+            //NRF_LOG_INFO("Invalid opcode received: 0x%x.", p_req->request);
             response.result = NRF_DFU_RES_CODE_OP_CODE_NOT_SUPPORTED;
             break;
     }
 
     if (response_ready)
     {
-        NRF_LOG_DEBUG("Request handling complete. Result: 0x%x", response.result);
+        //NRF_LOG_DEBUG("Request handling complete. Result: 0x%x", response.result);
 
         p_req->callback.response(&response, p_req->p_context);
 
@@ -816,7 +816,7 @@ ret_code_t nrf_dfu_req_handler_on_req(nrf_dfu_request_t * p_req)
     ret = app_sched_event_put(p_req, sizeof(nrf_dfu_request_t), nrf_dfu_req_handler_req);
     if (ret != NRF_SUCCESS)
     {
-        NRF_LOG_WARNING("Scheduler ran out of space!");
+        //NRF_LOG_WARNING("Scheduler ran out of space!");
     }
 
     return ret;

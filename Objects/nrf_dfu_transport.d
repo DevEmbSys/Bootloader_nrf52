@@ -42,7 +42,3 @@
 .\objects\nrf_dfu_transport.o: .\components\softdevice\s132\headers\ble_ranges.h
 .\objects\nrf_dfu_transport.o: .\components\softdevice\s132\headers\ble_types.h
 .\objects\nrf_dfu_transport.o: .\components\softdevice\s132\headers\ble_err.h
-.\objects\nrf_dfu_transport.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_transport.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_transport.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_transport.o: .\components\libraries\log\nrf_log_types.h

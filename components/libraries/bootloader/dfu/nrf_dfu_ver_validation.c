@@ -48,8 +48,8 @@
 #include "nrf_dfu_ver_validation.h"
 
 #define NRF_LOG_MODULE_NAME nrf_dfu_ver_validation
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 
 /** @brief Macro for reading the Firmware ID of a SoftDevice at a given base address.
@@ -264,12 +264,12 @@ nrf_dfu_result_t nrf_dfu_ver_validation_check(dfu_init_command_t const * p_init)
     nrf_dfu_result_t ret_val = NRF_DFU_RES_CODE_SUCCESS;
     if (!fw_type_ok(p_init))
     {
-        NRF_LOG_ERROR("Invalid firmware type.");
+        //NRF_LOG_ERROR("Invalid firmware type.");
         ret_val = EXT_ERR(NRF_DFU_EXT_ERROR_INIT_COMMAND_INVALID);
     }
     else if (!fw_hash_type_ok(p_init))
     {
-        NRF_LOG_ERROR("Invalid hash type.");
+        //NRF_LOG_ERROR("Invalid hash type.");
         ret_val = EXT_ERR(NRF_DFU_EXT_ERROR_WRONG_HASH_TYPE);
     }
     else if (!NRF_DFU_DEBUG ||
@@ -277,25 +277,25 @@ nrf_dfu_result_t nrf_dfu_ver_validation_check(dfu_init_command_t const * p_init)
     {
         if (p_init->has_hw_version == false)
         {
-            NRF_LOG_ERROR("No HW version.");
+            //NRF_LOG_ERROR("No HW version.");
             ret_val = EXT_ERR(NRF_DFU_EXT_ERROR_INIT_COMMAND_INVALID);
         }
         else if (p_init->hw_version != NRF_DFU_HW_VERSION)
         {
-            NRF_LOG_WARNING("Faulty HW version.");
+            //NRF_LOG_WARNING("Faulty HW version.");
             ret_val = EXT_ERR( NRF_DFU_EXT_ERROR_HW_VERSION_FAILURE);
         }
 
         else if (!sd_req_ok(p_init))
         {
-            NRF_LOG_WARNING("SD req not met.");
+            //NRF_LOG_WARNING("SD req not met.");
             ret_val = EXT_ERR(NRF_DFU_EXT_ERROR_SD_VERSION_FAILURE);
         }
         else if (p_init->has_fw_version)
         {
             if (!fw_version_ok(p_init))
             {
-                NRF_LOG_WARNING("FW version too low.");
+                //NRF_LOG_WARNING("FW version too low.");
                 ret_val = EXT_ERR(NRF_DFU_EXT_ERROR_FW_VERSION_FAILURE);
             }
         }
@@ -303,7 +303,7 @@ nrf_dfu_result_t nrf_dfu_ver_validation_check(dfu_init_command_t const * p_init)
         {
             if (fw_version_required(p_init->type))
             {
-                NRF_LOG_ERROR("FW version missing.");
+                //NRF_LOG_ERROR("FW version missing.");
                 ret_val = EXT_ERR(NRF_DFU_EXT_ERROR_INIT_COMMAND_INVALID);
             }
         }

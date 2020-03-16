@@ -47,8 +47,8 @@
 #include "crc32.h"
 
 #define NRF_LOG_MODULE_NAME nrf_dfu_settings_svci
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 #define DFU_SETTINGS_PEER_DATA_OFFSET           offsetof(nrf_dfu_settings_t, peer_data)             //<! Offset in the settings struct where the additional peer data is located.
 #define DFU_SETTINGS_ADV_NAME_OFFSET            offsetof(nrf_dfu_settings_t, adv_name)              //<! Offset in the settings struct where the additional advertisement name is located.
@@ -172,7 +172,7 @@ ret_code_t nrf_dfu_settings_additional_erase(void)
     if (   (s_dfu_settings.peer_data.crc != 0xFFFFFFFF)
         || (s_dfu_settings.adv_name.crc  != 0xFFFFFFFF))
     {
-        NRF_LOG_DEBUG("Erasing settings page additional data.");
+        //NRF_LOG_DEBUG("Erasing settings page additional data.");
 
         // Erasing and resetting the settings page without the peer data/adv data
         nrf_nvmc_page_erase(BOOTLOADER_SETTINGS_ADDRESS);

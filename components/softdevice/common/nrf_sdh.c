@@ -60,8 +60,8 @@
 #else
     #define NRF_LOG_LEVEL       0
 #endif // NRF_SDH_LOG_ENABLED
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 
 // Validate configuration options.
@@ -102,7 +102,7 @@ static uint32_t sdh_request_observer_notify(nrf_sdh_req_evt_t req)
 {
     nrf_section_iter_t iter;
 
-    NRF_LOG_DEBUG("State request: 0x%08X", req);
+    //NRF_LOG_DEBUG("State request: 0x%08X", req);
 
     for (nrf_section_iter_init(&iter, &sdh_req_observers);
          nrf_section_iter_get(&iter) != NULL;
@@ -116,12 +116,12 @@ static uint32_t sdh_request_observer_notify(nrf_sdh_req_evt_t req)
 
         if (handler(req, p_observer->p_context))
         {
-            NRF_LOG_DEBUG("Notify observer 0x%08X => ready", p_observer);
+           // NRF_LOG_DEBUG("Notify observer 0x%08X => ready", p_observer);
         }
         else
         {
             // Process is stopped.
-            NRF_LOG_DEBUG("Notify observer 0x%08X => blocking", p_observer);
+            //NRF_LOG_DEBUG("Notify observer 0x%08X => blocking", p_observer);
             return NRF_ERROR_BUSY;
         }
     }
@@ -137,7 +137,7 @@ static void sdh_state_observer_notify(nrf_sdh_state_evt_t evt)
 {
     nrf_section_iter_t iter;
 
-    NRF_LOG_DEBUG("State change: 0x%08X", evt);
+    //NRF_LOG_DEBUG("State change: 0x%08X", evt);
 
     for (nrf_section_iter_init(&iter, &sdh_state_observers);
          nrf_section_iter_get(&iter) != NULL;

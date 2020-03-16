@@ -59,8 +59,3 @@
 .\objects\nrf_dfu_settings_svci.o: .\components\softdevice\s132\headers\nrf_sd_def.h
 .\objects\nrf_dfu_settings_svci.o: .\modules\nrfx\drivers/nrfx_errors.h
 .\objects\nrf_dfu_settings_svci.o: .\components\libraries\crc32\crc32.h
-.\objects\nrf_dfu_settings_svci.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_settings_svci.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_dfu_settings_svci.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_settings_svci.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_settings_svci.o: .\components\libraries\log\nrf_log_types.h

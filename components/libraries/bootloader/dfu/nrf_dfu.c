@@ -42,7 +42,7 @@
 #include "nrf_dfu_utils.h"
 #include "nrf_dfu_transport.h"
 #include "nrf_dfu_req_handler.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 
 static nrf_dfu_observer_t m_user_observer;                          //<! Observer callback set by the user.
 
@@ -80,7 +80,7 @@ uint32_t nrf_dfu_init(nrf_dfu_observer_t observer)
 
     m_user_observer = observer;
 
-    NRF_LOG_INFO("Entering DFU mode.");
+    //NRF_LOG_INFO("Entering DFU mode.");
 
     dfu_observer(NRF_DFU_EVT_DFU_INITIALIZED);
 
@@ -88,7 +88,7 @@ uint32_t nrf_dfu_init(nrf_dfu_observer_t observer)
     ret_val = nrf_dfu_transports_init(dfu_observer);
     if (ret_val != NRF_SUCCESS)
     {
-        NRF_LOG_ERROR("Could not initalize DFU transport: 0x%08x", ret_val);
+        //NRF_LOG_ERROR("Could not initalize DFU transport: 0x%08x", ret_val);
         return ret_val;
     }
 

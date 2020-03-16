@@ -48,15 +48,3 @@
 .\objects\nrf_bootloader_wdt.o: .\components\softdevice\s132\headers\nrf_sd_def.h
 .\objects\nrf_bootloader_wdt.o: .\modules\nrfx\drivers/nrfx_errors.h
 .\objects\nrf_bootloader_wdt.o: components\libraries\bootloader\nrf_bootloader_dfu_timers.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\log\nrf_log_ctrl.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\log\nrf_log_types.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\log\src\nrf_log_ctrl_internal.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\util\sdk_common.h
-.\objects\nrf_bootloader_wdt.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\util\sdk_os.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\util\sdk_macros.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\log\nrf_log_backend_interface.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\experimental_section_vars\nrf_section.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_bootloader_wdt.o: .\components\libraries\log\nrf_log_instance.h

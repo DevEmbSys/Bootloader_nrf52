@@ -51,8 +51,8 @@
 #else //MEM_MANAGER_CONFIG_LOG_ENABLED
 #define NRF_LOG_LEVEL       0
 #endif //MEM_MANAGER_CONFIG_LOG_ENABLED
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 /**
  * @defgroup memory_manager_mutex_lock_unlock Module's Mutex Lock/Unlock Macros.
@@ -635,7 +635,7 @@ static void block_allocate(uint32_t block_index)
 
 uint32_t nrf_mem_init(void)
 {
-    NRF_LOG_DEBUG(">> %s.", (uint32_t)__func__);
+    //NRF_LOG_DEBUG(">> %s.", (uint32_t)__func__);
 
     SDK_MUTEX_INIT(m_mm_mutex);
 
@@ -658,7 +658,7 @@ uint32_t nrf_mem_init(void)
 
     MM_MUTEX_UNLOCK();
 
-    NRF_LOG_DEBUG("<< %s.", (uint32_t)__func__);
+    //NRF_LOG_DEBUG("<< %s.", (uint32_t)__func__);
 
     return NRF_SUCCESS;
 }
@@ -674,7 +674,7 @@ uint32_t nrf_mem_reserve(uint8_t ** pp_buffer, uint32_t * p_size)
 
     VERIFY_REQUESTED_SIZE(requested_size);
 
-    NRF_LOG_DEBUG(">> %s, size 0x%04lX.", (uint32_t)__func__, requested_size);
+    //NRF_LOG_DEBUG(">> %s, size 0x%04lX.", (uint32_t)__func__, requested_size);
 
     MM_MUTEX_LOCK();
 
@@ -683,9 +683,9 @@ uint32_t nrf_mem_reserve(uint8_t ** pp_buffer, uint32_t * p_size)
     uint32_t       memory_index = m_block_mem_start[block_cat];
     uint32_t       err_code     = (NRF_ERROR_NO_MEM | NRF_ERROR_MEMORY_MANAGER_ERR_BASE);
 
-    NRF_LOG_DEBUG("Start index for the pool = 0x%08lX, total block count 0x%08X",
-           block_index,
-           TOTAL_BLOCK_COUNT);
+//    NRF_LOG_DEBUG("Start index for the pool = 0x%08lX, total block count 0x%08X",
+//           block_index,
+//           TOTAL_BLOCK_COUNT);
 
     for (; block_index < TOTAL_BLOCK_COUNT; block_index++)
     {
@@ -693,7 +693,7 @@ uint32_t nrf_mem_reserve(uint8_t ** pp_buffer, uint32_t * p_size)
 
         if (is_block_free(block_index) == true)
         {
-            NRF_LOG_DEBUG("Reserving block 0x%08lX", block_index);
+            //NRF_LOG_DEBUG("Reserving block 0x%08lX", block_index);
 
             // Search succeeded, found free block.
             err_code     = NRF_SUCCESS;
@@ -715,10 +715,10 @@ uint32_t nrf_mem_reserve(uint8_t ** pp_buffer, uint32_t * p_size)
     }
     if (err_code != NRF_SUCCESS)
     {
-        NRF_LOG_DEBUG("Memory reservation result %d, memory %p, size %d!",
-                err_code,
-                (uint32_t)(*pp_buffer),
-                (*p_size));
+//        NRF_LOG_DEBUG("Memory reservation result %d, memory %p, size %d!",
+//                err_code,
+//                (uint32_t)(*pp_buffer),
+//                (*p_size));
 
         #ifdef MEM_MANAGER_ENABLE_DIAGNOSTICS
         nrf_mem_diagnose();
@@ -727,8 +727,8 @@ uint32_t nrf_mem_reserve(uint8_t ** pp_buffer, uint32_t * p_size)
 
     MM_MUTEX_UNLOCK();
 
-    NRF_LOG_DEBUG("<< %s %p, result 0x%08lX.", (uint32_t)__func__,
-                 (uint32_t)(*pp_buffer), err_code);
+//    NRF_LOG_DEBUG("<< %s %p, result 0x%08lX.", (uint32_t)__func__,
+//                 (uint32_t)(*pp_buffer), err_code);
 
     return err_code;
 }
@@ -755,17 +755,17 @@ void * nrf_calloc(uint32_t count, uint32_t size)
     uint8_t * buffer = NULL;
     uint32_t allocated_size = (size * count);
 
-    NRF_LOG_DEBUG("[%s]: Requested size %d, count %d", (uint32_t)__func__, allocated_size, count);
+    //NRF_LOG_DEBUG("[%s]: Requested size %d, count %d", (uint32_t)__func__, allocated_size, count);
 
     uint32_t retval = nrf_mem_reserve(&buffer, &allocated_size);
     if (retval == NRF_SUCCESS)
     {
-        NRF_LOG_DEBUG("[%s]: buffer %p, total size %d", (uint32_t)__func__, (uint32_t)buffer, allocated_size);
+        //NRF_LOG_DEBUG("[%s]: buffer %p, total size %d", (uint32_t)__func__, (uint32_t)buffer, allocated_size);
         memset(buffer,0, allocated_size);
     }
     else
     {
-        NRF_LOG_DEBUG("[%s]: Failed to allocate memory %d", (uint32_t)__func__, allocated_size);
+        //NRF_LOG_DEBUG("[%s]: Failed to allocate memory %d", (uint32_t)__func__, allocated_size);
         buffer = NULL;
     }
 
@@ -778,7 +778,7 @@ void nrf_free(void * p_mem)
     VERIFY_MODULE_INITIALIZED_VOID();
     NULL_PARAM_CHECK_VOID(p_mem);
 
-    NRF_LOG_DEBUG(">> %s %p.", (uint32_t)__func__, (uint32_t)p_mem);
+    //NRF_LOG_DEBUG(">> %s %p.", (uint32_t)__func__, (uint32_t)p_mem);
 
     MM_MUTEX_LOCK();
 
@@ -790,7 +790,7 @@ void nrf_free(void * p_mem)
         if (&m_memory[memory_index] == p_mem)
         {
             // Found a free block of memory, assign.
-            NRF_LOG_DEBUG("<< Freeing block %d.", index);
+            //NRF_LOG_DEBUG("<< Freeing block %d.", index);
             block_init(index);
             break;
         }
@@ -799,7 +799,7 @@ void nrf_free(void * p_mem)
 
     MM_MUTEX_UNLOCK();
 
-    NRF_LOG_DEBUG("<< %s.", (uint32_t)__func__);
+    //NRF_LOG_DEBUG("<< %s.", (uint32_t)__func__);
     return;
 }
 
@@ -896,7 +896,7 @@ void print_block_info(uint32_t block_cat, uint32_t * p_mem_in_use)
         }
         snprintf(&print_buffer[column_end], 2, "|");
 
-        NRF_LOG_BYTES_DEBUG(print_buffer, strlen(print_buffer));
+        //NRF_LOG_BYTES_DEBUG(print_buffer, strlen(print_buffer));
 
         (*p_mem_in_use) += in_use;
     }
@@ -907,10 +907,10 @@ void nrf_mem_diagnose(void)
 {
     uint32_t in_use = 0;
 
-    NRF_LOG_DEBUG("");
-    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
-    NRF_LOG_DEBUG("| Block      | Size       | Total      | In Use     | Min Alloc  | Max Alloc  |");
-    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
+//    NRF_LOG_DEBUG("");
+//    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
+//    NRF_LOG_DEBUG("| Block      | Size       | Total      | In Use     | Min Alloc  | Max Alloc  |");
+//    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
 
     print_block_info(BLOCK_CAT_XXS, &in_use);
     print_block_info(BLOCK_CAT_XS, &in_use);
@@ -920,10 +920,10 @@ void nrf_mem_diagnose(void)
     print_block_info(BLOCK_CAT_XL, &in_use);
     print_block_info(BLOCK_CAT_XXL, &in_use);
 
-    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
-    NRF_LOG_DEBUG("| Total      | %d      | %d        | %d",
-            TOTAL_MEMORY_SIZE, TOTAL_BLOCK_COUNT,in_use);
-    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
+//    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
+//    NRF_LOG_DEBUG("| Total      | %d      | %d        | %d",
+//            TOTAL_MEMORY_SIZE, TOTAL_BLOCK_COUNT,in_use);
+//    NRF_LOG_DEBUG("+------------+------------+------------+------------+------------+------------+");
 }
 
 #endif // MEM_MANAGER_ENABLE_DIAGNOSTICS

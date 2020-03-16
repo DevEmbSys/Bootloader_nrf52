@@ -47,7 +47,7 @@
 #include "nrf_dfu_utils.h"
 #include "nrf_dfu_settings.h"
 #include "nrf_assert.h"
-#include "nrf_log.h"
+//#include "nrf_log.h"
 #include "sdk_config.h"
 
 
@@ -225,7 +225,7 @@ void nrf_bootloader_app_start_final(uint32_t vector_table_addr)
 
     if (!NRF_BOOTLOADER_READ_PROTECT && (ret_val != NRF_SUCCESS))
     {
-        NRF_LOG_ERROR("Could not protect bootloader and settings pages, 0x%x.", ret_val);
+        //NRF_LOG_ERROR("Could not protect bootloader and settings pages, 0x%x.", ret_val);
     }
     APP_ERROR_CHECK(ret_val);
 
@@ -235,7 +235,7 @@ void nrf_bootloader_app_start_final(uint32_t vector_table_addr)
 
     if (!NRF_BOOTLOADER_READ_PROTECT && (ret_val != NRF_SUCCESS))
     {
-        NRF_LOG_ERROR("Could not protect SoftDevice and application, 0x%x.", ret_val);
+        //NRF_LOG_ERROR("Could not protect SoftDevice and application, 0x%x.", ret_val);
     }
     APP_ERROR_CHECK(ret_val);
 

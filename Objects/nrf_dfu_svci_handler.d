@@ -62,9 +62,5 @@
 .\objects\nrf_dfu_svci_handler.o: .\components\softdevice\s132\headers\ble_err.h
 .\objects\nrf_dfu_svci_handler.o: .\components\libraries\bootloader\ble_dfu\nrf_dfu_ble_svci_bond_sharing.h
 .\objects\nrf_dfu_svci_handler.o: .\components\libraries\svc\nrf_svci_async_function.h
-.\objects\nrf_dfu_svci_handler.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_svci_handler.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_svci_handler.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_svci_handler.o: .\components\libraries\log\nrf_log_types.h
 .\objects\nrf_dfu_svci_handler.o: components\libraries\bootloader\dfu\nrf_dfu_settings.h
 .\objects\nrf_dfu_svci_handler.o: components\libraries\bootloader\dfu\nrf_dfu_flash.h

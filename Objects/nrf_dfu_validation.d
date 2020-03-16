@@ -136,10 +136,3 @@
 .\objects\nrf_dfu_validation.o: components\libraries\bootloader\dfu\nrf_dfu_req_handler.h
 .\objects\nrf_dfu_validation.o: components\libraries\bootloader\dfu\nrf_dfu_ver_validation.h
 .\objects\nrf_dfu_validation.o: .\components\libraries\strerror\nrf_strerror.h
-.\objects\nrf_dfu_validation.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_validation.o: .\components\libraries\log\src\nrf_log_internal.h
-.\objects\nrf_dfu_validation.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_validation.o: .\components\libraries\log\nrf_log_types.h
-.\objects\nrf_dfu_validation.o: .\components\libraries\log\nrf_log_ctrl.h
-.\objects\nrf_dfu_validation.o: .\components\libraries\log\src\nrf_log_ctrl_internal.h
-.\objects\nrf_dfu_validation.o: .\components\libraries\log\nrf_log_backend_interface.h

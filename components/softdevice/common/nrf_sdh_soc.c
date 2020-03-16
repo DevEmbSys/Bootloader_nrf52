@@ -56,8 +56,8 @@
 #else
     #define NRF_LOG_LEVEL       0
 #endif // NRF_SDH_SOC_LOG_ENABLED
-#include "nrf_log.h"
-NRF_LOG_MODULE_REGISTER();
+//#include "nrf_log.h"
+//NRF_LOG_MODULE_REGISTER();
 
 
 // Create section set "sdh_soc_observers".
@@ -84,7 +84,7 @@ static void nrf_sdh_soc_evts_poll(void * p_context)
             break;
         }
 
-        NRF_LOG_DEBUG("SoC event: 0x%x.", evt_id);
+        //NRF_LOG_DEBUG("SoC event: 0x%x.", evt_id);
 
         // Forward the event to SoC observers.
         nrf_section_iter_t  iter;

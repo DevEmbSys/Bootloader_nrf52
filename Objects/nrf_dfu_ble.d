@@ -60,8 +60,6 @@
 .\objects\nrf_dfu_ble.o: .\components\libraries\experimental_section_vars\nrf_section_iter.h
 .\objects\nrf_dfu_ble.o: .\components\softdevice\common\nrf_sdh_ble.h
 .\objects\nrf_dfu_ble.o: .\components\libraries\balloc\nrf_balloc.h
-.\objects\nrf_dfu_ble.o: .\components\libraries\log\nrf_log_instance.h
-.\objects\nrf_dfu_ble.o: .\components\libraries\log\nrf_log_types.h
 .\objects\nrf_dfu_ble.o: .\components\libraries\delay\nrf_delay.h
 .\objects\nrf_dfu_ble.o: .\modules\nrfx\nrfx.h
 .\objects\nrf_dfu_ble.o: .\integration\nrfx\nrfx_config.h
@@ -79,5 +77,3 @@
 .\objects\nrf_dfu_ble.o: .\components\softdevice\s132\headers\nrf_sd_def.h
 .\objects\nrf_dfu_ble.o: .\modules\nrfx\drivers/nrfx_errors.h
 .\objects\nrf_dfu_ble.o: .\components\libraries\bootloader\dfu\nrf_dfu_settings.h
-.\objects\nrf_dfu_ble.o: .\components\libraries\log\nrf_log.h
-.\objects\nrf_dfu_ble.o: .\components\libraries\log\src\nrf_log_internal.h
